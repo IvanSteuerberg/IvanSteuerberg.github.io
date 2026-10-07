@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { developerInfo } from '../data/apps';
+---
+
+<BaseLayout title={`404 - Página no encontrada | ${developerInfo.name}`}>
+  <div class="max-w-2xl mx-auto px-4 py-24 text-center">
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-indigo-600/10 text-indigo-400 border border-indigo-500/20 text-3xl font-extrabold mb-6">
+      404
+    </div>
+    <h1 class="text-3xl font-extrabold text-white mb-3">Página no encontrada</h1>
+    <p class="text-slate-400 text-sm mb-8">
+      El enlace que buscas no existe o ha sido trasladado. Puedes regresar al inicio para consultar el catálogo de aplicaciones o contactar con soporte.
+    </p>
+
+    <div class="flex items-center justify-center gap-4">
+      <a 
+        href="/"
+        class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+      >
+        Volver a la portada
+      </a>
+      <a 
+        href={`mailto:${developerInfo.contactEmail}`}
+        class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs font-semibold transition-colors"
+      >
+        Soporte técnico
+      </a>
+    </div>
+  </div>
+</BaseLayout>

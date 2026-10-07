@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { apps, developerInfo, type AppData } from '../../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+}
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<BaseLayout 
+  title={`${app.name} | App para Android de ${developerInfo.name}`}
+  description={app.description}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 mb-8">
+      <a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/#apps" class="hover:text-indigo-400 transition-colors">Apps</a>
+      <span>/</span>
+      <span class="text-indigo-400 font-semibold">{app.name}</span>
+    </nav>
+
+    <!-- App Hero Header -->
+    <div class="p-6 sm:p-10 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl mb-10">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-slate-800">
+        <div class="flex items-center gap-5">
+          <div class={`w-20 h-20 rounded-3xl bg-gradient-to-br ${app.iconBg} flex items-center justify-center text-4xl shadow-xl shadow-indigo-500/10`}>
+            {app.iconEmoji}
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                {app.category}
+              </span>
+              <span class="text-xs text-slate-400">Versión {app.version}</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+              {app.name}
+            </h1>
+            <p class="text-sm text-slate-400 mt-1">
+              Por <span class="text-slate-200">{developerInfo.name}</span> ({developerInfo.brandName})
+            </p>
+          </div>
+        </div>
+
+        {app.playStoreUrl && (
+          <a 
+            href={app.playStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/25 transition-all text-center flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.793 12 3.61 22.186a2.001 2.001 0 01-1.61-.433 1.996 1.996 0 01-.6-1.567V3.814c0-.622.228-1.18.6-1.567.371-.387.94-.575 1.609-.433zm11.605 11.607l2.873 2.873-13.882 7.712 11.009-10.585zm0-2.842L4.205 0l13.882 7.712-2.873 2.873zM18.847 12l2.365-1.314c.788-.438 1.288-1.25 1.288-2.146 0-.896-.5-1.708-1.288-2.146L18.847 5.08 16.59 7.336 18.847 12z"/>
+            </svg>
+            Descargar en Google Play
+          </a>
+        )}
+      </div>
+
+      <div class="pt-6">
+        <h2 class="text-lg font-bold text-white mb-2">Acerca de esta aplicación</h2>
+        <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+          {app.description}
+        </p>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-6">Características Principales</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {app.features.map((feature) => (
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+              ✓
+            </span>
+            <span class="text-sm text-slate-300">{feature}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Play Store Transparency & Legal Hub -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-950/40 via-slate-900 to-slate-900 border border-indigo-900/40 shadow-xl">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🛡️</span>
+        <div>
+          <h2 class="text-xl font-bold text-white">Transparencia y Normativa de Google Play</h2>
+          <p class="text-xs text-slate-400">Enlaces requeridos por la política de seguridad y privacidad de Android.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+        <a 
+          href={`/apps/${app.slug}/privacy-policy/`}
+          class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-colors group"
+        >
+          <div class="text-indigo-400 font-bold text-sm mb-1 group-hover:underline">
+            Política de Privacidad →
+          </div>
+          <p class="text-xs text-slate-400">
+            Tratamiento de datos, permisos de Android y servicios de terceros.
+          </p>
+        </a>
+
+        <a 
+          href={`/apps/${app.slug}/data-deletion/`}
+          class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-colors group"
+        >
+          <div class="text-indigo-400 font-bold text-sm mb-1 group-hover:underline">
+            Borrado de Datos →
+          </div>
+          <p class="text-xs text-slate-400">
+            Procedimiento oficial para solicitar la eliminación de tu cuenta o datos.
+          </p>
+        </a>
+
+        <a 
+          href={`/apps/${app.slug}/terms/`}
+          class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-colors group"
+        >
+          <div class="text-indigo-400 font-bold text-sm mb-1 group-hover:underline">
+            Términos de Uso →
+          </div>
+          <p class="text-xs text-slate-400">
+            Condiciones de uso, licencias y descargo de responsabilidad.
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

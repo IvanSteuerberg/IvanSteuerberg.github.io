@@ -1,0 +1,113 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { apps, developerInfo, type AppData } from '../../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+}
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<LegalLayout 
+  app={app} 
+  documentType="data-deletion"
+  title={`Solicitud de Eliminación de Cuenta y Datos - ${app.name}`}
+>
+  <div class="space-y-8">
+    <!-- Notice box required by Google Play Console -->
+    <div class="p-6 rounded-2xl bg-amber-950/20 border border-amber-900/40 text-amber-200 text-sm">
+      <strong class="font-bold text-amber-300 block mb-1">
+        Requisito de Seguridad de Datos de Google Play:
+      </strong>
+      De conformidad con la política de Google Play sobre eliminación de cuentas y datos del usuario, esta página describe cómo cualquier usuario puede solicitar el borrado permanente y total de sus datos asociados a <strong>{app.name}</strong> sin necesidad de reinstalar la aplicación.
+    </div>
+
+    <!-- Section: Step by step instructions -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">1. Procedimiento para Solicitar el Borrado</h2>
+      <p class="text-slate-300 mb-4">
+        Puedes solicitar la eliminación de tus datos en cualquier momento siguiendo estos pasos:
+      </p>
+
+      <ol class="space-y-3">
+        {app.dataDeletion.instructions.map((step, idx) => (
+          <li class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-indigo-500/30">
+              {idx + 1}
+            </span>
+            <span class="text-sm text-slate-300">{step}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Section: Direct Email Request Box -->
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+      <h2 class="text-lg font-bold text-white">2. Solicitud Directa por Correo Electrónico</h2>
+      <p class="text-sm text-slate-300">
+        Si no tienes acceso a la app o deseas que eliminemos manualmente cualquier registro de soporte o comunicación previa, envíanos un correo a:
+      </p>
+
+      <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 font-mono text-sm space-y-1">
+        <p><strong class="text-slate-400">Para:</strong> <span class="text-indigo-400">{developerInfo.contactEmail}</span></p>
+        <p><strong class="text-slate-400">Asunto:</strong> <span class="text-slate-200">Solicitud de Eliminación de Datos - {app.name}</span></p>
+        <p><strong class="text-slate-400">Contenido:</strong> <span class="text-slate-400">Indica tu identificador de usuario o la dirección de correo con la que solicitaste soporte.</span></p>
+      </div>
+
+      <a 
+        href={`mailto:${developerInfo.contactEmail}?subject=Solicitud%20de%20Eliminaci%C3%B3n%20de%20Datos%20-%20${encodeURIComponent(app.name)}`}
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+      >
+        Redactar correo de solicitud de borrado ↗
+      </a>
+    </section>
+
+    <!-- Section: Types of data deleted -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">3. Tipos de Datos que se Eliminan</h2>
+      <ul class="space-y-2">
+        {app.dataDeletion.deletedDataTypes.map((type) => (
+          <li class="flex items-center gap-2 text-sm text-slate-300">
+            <span class="text-red-400 font-bold">✕</span>
+            <span>{type}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Section: Retained data if applicable -->
+    {app.dataDeletion.retainedDataTypes && app.dataDeletion.retainedDataTypes.length > 0 && (
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">4. Datos Retenidos por Obligación Legal</h2>
+        <p class="text-sm text-slate-400 mb-3">
+          En cumplimiento con las normativas fiscales y los términos del servicio de Google Play, existen ciertos registros que deben conservarse durante los períodos legales fijados:
+        </p>
+        <ul class="space-y-2">
+          {app.dataDeletion.retainedDataTypes.map((retained) => (
+            <li class="flex items-center gap-2 text-sm text-slate-400">
+              <span class="text-amber-400 font-bold">!</span>
+              <span>{retained}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- Section: Timeframe -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">5. Plazo de Tramitación</h2>
+      <p class="text-sm text-slate-300">
+        Una vez recibida y confirmada la solicitud, el borrado de los datos se completará en un plazo máximo de 
+        <strong class="text-white">{app.dataDeletion.turnaroundDays} días naturales</strong>. Recibirás una confirmación por correo electrónico una vez finalizado el proceso.
+      </p>
+    </section>
+  </div>
+</LegalLayout>

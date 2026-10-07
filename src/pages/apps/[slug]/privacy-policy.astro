@@ -1,0 +1,162 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { apps, developerInfo, type AppData } from '../../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+}
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<LegalLayout 
+  app={app} 
+  documentType="privacy"
+  title={`Política de Privacidad de ${app.name}`}
+>
+  <div class="space-y-8">
+    <!-- Intro Callout -->
+    <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+      <strong class="font-semibold block mb-1 text-white">Resumen de Privacidad:</strong>
+      {app.privacyPolicy.summary}
+    </div>
+
+    <!-- Section 1 -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">1. Responsable del Tratamiento de los Datos</h2>
+      <p>
+        El responsable del desarrollo y distribución de la aplicación <strong class="text-white">{app.name}</strong> es 
+        <strong class="text-white">{developerInfo.name}</strong> (marca comercial <strong class="text-white">{developerInfo.brandName}</strong>).
+      </p>
+      <p class="mt-2">
+        Si tienes preguntas, dudas o inquietudes sobre cómo se gestiona tu información, puedes ponerte en contacto directo con nosotros en el correo electrónico oficial de soporte técnico:
+        <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline font-medium">
+          {developerInfo.contactEmail}
+        </a>.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">2. Información y Datos Recopilados</h2>
+      {app.privacyPolicy.collectsPersonalData ? (
+        <p>
+          Esta aplicación puede recopilar ciertos datos necesarios para su correcto funcionamiento, tales como identificadores anónimos de dispositivo para diagnósticos y métricas de rendimiento.
+        </p>
+      ) : (
+        <p>
+          <strong class="text-white">{app.name}</strong> está diseñada bajo el principio de <em>Privacidad desde el Diseño</em> (Privacy by Design). 
+          <strong> No recopilamos, no almacenamos en servidores remotos ni vendemos información personal identificable</strong> (como tu nombre, dirección postal, número telefónico o credenciales bancarias).
+        </p>
+      )}
+      <p class="mt-2">
+        Cualquier dato generado durante el uso de la aplicación (como notas, historiales o configuraciones personalizadas) se guarda de manera local y encriptada en el propio almacenamiento interno de tu dispositivo Android.
+      </p>
+    </section>
+
+    <!-- Section 3: Android Permissions -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">3. Permisos de Android Solicitados</h2>
+      <p class="mb-4">
+        Para prestar sus servicios esenciales, la aplicación solicita al sistema operativo Android los siguientes permisos mínimos indispensables:
+      </p>
+
+      <div class="space-y-3">
+        {app.privacyPolicy.permissions.map((perm) => (
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="font-mono text-xs text-indigo-400 font-semibold block mb-1">
+              {perm.name}
+            </span>
+            <p class="text-sm text-slate-300">
+              {perm.purpose}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 4: Third Party SDKs -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">4. Servicios y Librerías de Terceros</h2>
+      <p class="mb-3">
+        La aplicación puede apoyarse en servicios de infraestructura provistos por plataformas tecnológicas de confianza para la gestión de descargas y comprobación de integridad:
+      </p>
+
+      <ul class="space-y-3">
+        {app.privacyPolicy.thirdPartyServices.map((service) => (
+          <li class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <strong class="text-white text-sm">{service.name}</strong>
+              <a 
+                href={service.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="text-xs text-indigo-400 hover:underline"
+              >
+                Política de privacidad ↗
+              </a>
+            </div>
+            <p class="text-xs text-slate-400">{service.purpose}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Section 5: Data Retention -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">5. Retención y Conservación de los Datos</h2>
+      <p>
+        {app.privacyPolicy.dataRetentionText}
+      </p>
+      <p class="mt-2">
+        Para conocer el procedimiento de eliminación de datos de conformidad con las directrices de Google Play, consulta nuestro apartado específico de 
+        <a href={`/apps/${app.slug}/data-deletion/`} class="text-indigo-400 hover:underline font-medium">
+          Eliminación de Cuenta y Datos
+        </a>.
+      </p>
+    </section>
+
+    <!-- Section 6: Children Privacy -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">6. Privacidad de Menores (COPPA y Familias de Google Play)</h2>
+      <p>
+        {app.privacyPolicy.childrenPrivacyText || "Nuestros servicios no están orientados a niños menores de 13 años. No recopilamos deliberadamente información personal de niños. Si eres padre, madre o tutor y sospechas que un menor nos ha facilitado información personal, contáctanos inmediatamente para proceder a su eliminación definitiva."}
+      </p>
+    </section>
+
+    <!-- Section 7: Security -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">7. Seguridad de la Información</h2>
+      <p>
+        Adoptamos medidas técnicas y organizativas adecuadas para proteger cualquier información frente al acceso no autorizado, alteración, divulgación o destrucción. Dado que los datos residen en tu propio dispositivo, te aconsejamos mantener actualizado el sistema operativo Android y contar con un método de bloqueo de pantalla seguro.
+      </p>
+    </section>
+
+    <!-- Section 8: Changes -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">8. Actualizaciones de esta Política</h2>
+      <p>
+        Podemos actualizar periódicamente esta Política de Privacidad para reflejar modificaciones operativas, legales o reglamentarias. Cualquier actualización se publicará directamente en esta página web con la fecha de revisión correspondiente.
+      </p>
+    </section>
+
+    <!-- Section 9: Contact -->
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h2 class="text-lg font-bold text-white mb-2">9. Contacto Oficial de Privacidad</h2>
+      <p class="text-sm text-slate-300">
+        Para cualquier duda, solicitud o aclaración relativa a esta política o al tratamiento de tus datos en <strong class="text-white">{app.name}</strong>, puedes comunicarte con:
+      </p>
+      <div class="mt-3 text-sm">
+        <p class="text-white font-semibold">{developerInfo.name} · {developerInfo.brandName}</p>
+        <p class="text-slate-400">Correo electrónico: <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a></p>
+      </div>
+    </section>
+  </div>
+</LegalLayout>

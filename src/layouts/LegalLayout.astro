@@ -1,0 +1,159 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { developerInfo, type AppData } from '../data/apps';
+
+interface Props {
+  app: AppData;
+  documentType: 'privacy' | 'data-deletion' | 'terms';
+  title: string;
+}
+
+const { app, documentType, title } = Astro.props;
+
+const docLabels = {
+  privacy: 'Política de Privacidad',
+  'data-deletion': 'Eliminación de Cuenta y Datos',
+  terms: 'Términos y Condiciones'
+};
+
+const currentLabel = docLabels[documentType];
+---
+
+<BaseLayout 
+  title={`${currentLabel} - ${app.name} | ${developerInfo.name}`}
+  description={`${currentLabel} oficial de la aplicación Android ${app.name} para Google Play Store.`}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 mb-6 overflow-x-auto whitespace-nowrap pb-2">
+      <a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/#apps" class="hover:text-indigo-400 transition-colors">Apps</a>
+      <span>/</span>
+      <a href={`/apps/${app.slug}/`} class="hover:text-indigo-400 transition-colors font-medium text-slate-300">
+        {app.name}
+      </a>
+      <span>/</span>
+      <span class="text-indigo-400 font-semibold">{currentLabel}</span>
+    </nav>
+
+    <!-- Header Box -->
+    <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-xl mb-10">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+        <div class="flex items-center gap-4">
+          <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.iconBg} flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/10`}>
+            {app.iconEmoji}
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                Google Play Store
+              </span>
+              <span class="text-xs text-slate-400">v{app.version}</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+              {currentLabel}
+            </h1>
+            <p class="text-sm text-slate-400">
+              Aplicación: <strong class="text-slate-200">{app.name}</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="flex items-center gap-2 self-start sm:self-center">
+          <button 
+            onclick="window.print()" 
+            class="px-3.5 py-2 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+            title="Imprimir documento"
+          >
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            Imprimir / Guardar
+          </button>
+        </div>
+      </div>
+
+      <!-- Legal Metadata Bar -->
+      <div class="pt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+        <div>
+          <span>Última actualización: </span>
+          <strong class="text-slate-300">{app.privacyPolicy.lastUpdated}</strong>
+        </div>
+        <div>
+          <span>Desarrollador responsable: </span>
+          <strong class="text-slate-300">{developerInfo.name} ({developerInfo.brandName})</strong>
+        </div>
+        <div>
+          <span>Contacto de soporte: </span>
+          <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">
+            {developerInfo.contactEmail}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Navigation Pills -->
+    <div class="flex items-center gap-2 mb-8 border-b border-slate-800/80 pb-4 overflow-x-auto text-xs sm:text-sm">
+      <a 
+        href={`/apps/${app.slug}/`}
+        class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors whitespace-nowrap"
+      >
+        ← Volver a la ficha de la App
+      </a>
+      <span class="text-slate-700">|</span>
+      <a 
+        href={`/apps/${app.slug}/privacy-policy/`} 
+        class={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors ${
+          documentType === 'privacy' 
+            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
+            : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+        }`}
+      >
+        Política de Privacidad
+      </a>
+      <a 
+        href={`/apps/${app.slug}/data-deletion/`} 
+        class={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors ${
+          documentType === 'data-deletion' 
+            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
+            : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+        }`}
+      >
+        Eliminación de Datos
+      </a>
+      <a 
+        href={`/apps/${app.slug}/terms/`} 
+        class={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors ${
+          documentType === 'terms' 
+            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
+            : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+        }`}
+      >
+        Términos de Uso
+      </a>
+    </div>
+
+    <!-- Document Content Body -->
+    <article class="prose prose-invert max-w-none space-y-8 leading-relaxed text-slate-300 text-sm sm:text-base">
+      <slot />
+    </article>
+
+    <!-- Support Box for Google Play Reviewers & Users -->
+    <div class="mt-14 p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <h3 class="text-base font-bold text-white">¿Tienes dudas sobre esta política o necesitas asistencia?</h3>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Atendemos directamente solicitudes de soporte y derechos de privacidad ARCO/GDPR.
+        </p>
+      </div>
+      <a 
+        href={`mailto:${developerInfo.contactEmail}?subject=Consulta%20Legal%20-%20${encodeURIComponent(app.name)}`}
+        class="px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/20 transition-colors whitespace-nowrap"
+      >
+        Contactar desarrollador
+      </a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { apps, developerInfo, type AppData } from '../../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+}
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<LegalLayout 
+  app={app} 
+  documentType="terms"
+  title={`Términos y Condiciones de Uso - ${app.name}`}
+>
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">1. Aceptación de los Términos</h2>
+      <p>
+        Al descargar, instalar o utilizar la aplicación <strong class="text-white">{app.name}</strong>, desarrollada por <strong class="text-white">{developerInfo.name}</strong> ({developerInfo.brandName}), aceptas quedar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguna disposición, por favor desinstala la aplicación y cesa su uso.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">2. Licencia de Uso</h2>
+      <p>
+        Se te concede una licencia limitada, no exclusiva, intransferible y revocable para descargar e instalar una copia de la aplicación en dispositivos Android compatibles de tu propiedad o bajo tu control legítimo, exclusivamente para tu uso personal y no comercial.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">3. Restricciones</h2>
+      <p>Te comprometes a no realizar ninguna de las siguientes acciones:</p>
+      <ul class="list-disc pl-5 mt-2 space-y-1 text-slate-300">
+        <li>Descompilar, realizar ingeniería inversa o desensamblar cualquier parte del código fuente de la aplicación.</li>
+        <li>Modificar, traducir, adaptar o crear obras derivadas basadas en la aplicación.</li>
+        <li>Utilizar la aplicación para cualquier fin ilícito, fraudulento o que infrinja los derechos de terceros.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">4. Exclusión de Garantías</h2>
+      <p>
+        La aplicación se proporciona "tal cual" y "según disponibilidad", sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos que el funcionamiento sea ininterrumpido o esté libre de errores imprevistos.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">5. Contacto</h2>
+      <p>
+        Para cualquier duda relativa a estos términos, puedes escribir a <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
+      </p>
+    </section>
+  </div>
+</LegalLayout>
