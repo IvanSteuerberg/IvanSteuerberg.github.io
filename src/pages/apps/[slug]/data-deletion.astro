@@ -16,98 +16,114 @@ interface Props {
 const { app } = Astro.props;
 ---
 
-<LegalLayout 
-  app={app} 
-  documentType="data-deletion"
-  title={`Solicitud de Eliminación de Cuenta y Datos - ${app.name}`}
->
-  <div class="space-y-8">
-    <!-- Notice box required by Google Play Console -->
-    <div class="p-6 rounded-2xl bg-amber-950/20 border border-amber-900/40 text-amber-200 text-sm">
-      <strong class="font-bold text-amber-300 block mb-1">
-        Requisito de Seguridad de Datos de Google Play:
+<LegalLayout app={app} documentType="data-deletion">
+  <!-- ==================== SPANISH VERSION ==================== -->
+  <div data-lang="es" class="space-y-8">
+    <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+      <strong class="font-bold text-white block mb-2 text-base">
+        Política de Almacenamiento Local y Ausencia de Cuentas:
       </strong>
-      De conformidad con la política de Google Play sobre eliminación de cuentas y datos del usuario, esta página describe cómo cualquier usuario puede solicitar el borrado permanente y total de sus datos asociados a <strong>{app.name}</strong> sin necesidad de reinstalar la aplicación.
+      <strong class="text-white">{app.name}</strong> no tiene cuentas y no guarda ningún dato fuera de tu teléfono, por lo que nosotros no almacenamos ni disponemos de datos tuyos que borrar en servidores externos.
     </div>
 
-    <!-- Section: Step by step instructions -->
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">1. Procedimiento para Solicitar el Borrado</h2>
+      <h2 class="text-xl font-bold text-white mb-3">Cómo eliminar tus datos locales por completo</h2>
       <p class="text-slate-300 mb-4">
-        Puedes solicitar la eliminación de tus datos en cualquier momento siguiendo estos pasos:
+        Para eliminar todo lo que la aplicación guarda localmente (como alarmas y ajustes configurados), dispones de dos vías inmediatas en tu dispositivo:
       </p>
 
-      <ol class="space-y-3">
-        {app.dataDeletion.instructions.map((step, idx) => (
-          <li class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-start gap-3">
-            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-indigo-500/30">
-              {idx + 1}
-            </span>
-            <span class="text-sm text-slate-300">{step}</span>
-          </li>
-        ))}
-      </ol>
+      <div class="space-y-4">
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">1</span>
+            Borrar datos desde los Ajustes de Android
+          </h3>
+          <p class="text-sm text-slate-300">
+            Ve a: <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Ajustes de Android → Aplicaciones → {app.name} → Almacenamiento → Borrar datos</code>.
+          </p>
+          <p class="text-xs text-slate-400 mt-2">
+            Esta acción restablece la aplicación a su estado de fábrica de forma instantánea.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">2</span>
+            Desinstalar la aplicación
+          </h3>
+          <p class="text-sm text-slate-300">
+            Al desinstalar la app de tu teléfono, el sistema operativo Android elimina de manera irreversible e inmediata todos los archivos, configuraciones y registros locales asociados a la misma.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <!-- Section: Direct Email Request Box -->
-    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
-      <h2 class="text-lg font-bold text-white">2. Solicitud Directa por Correo Electrónico</h2>
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h2 class="text-lg font-bold text-white mb-2">Contacto de asistencia</h2>
       <p class="text-sm text-slate-300">
-        Si no tienes acceso a la app o deseas que eliminemos manualmente cualquier registro de soporte o comunicación previa, envíanos un correo a:
+        Si tienes cualquier duda o necesitas ayuda sobre el tratamiento de datos de la app, escríbenos directamente a:
       </p>
-
-      <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 font-mono text-sm space-y-1">
-        <p><strong class="text-slate-400">Para:</strong> <span class="text-indigo-400">{developerInfo.contactEmail}</span></p>
-        <p><strong class="text-slate-400">Asunto:</strong> <span class="text-slate-200">Solicitud de Eliminación de Datos - {app.name}</span></p>
-        <p><strong class="text-slate-400">Contenido:</strong> <span class="text-slate-400">Indica tu identificador de usuario o la dirección de correo con la que solicitaste soporte.</span></p>
-      </div>
-
       <a 
-        href={`mailto:${developerInfo.contactEmail}?subject=Solicitud%20de%20Eliminaci%C3%B3n%20de%20Datos%20-%20${encodeURIComponent(app.name)}`}
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+        href={`mailto:${developerInfo.contactEmail}?subject=Duda%20sobre%20eliminacion%20de%20datos%20-%20${encodeURIComponent(app.name)}`} 
+        class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
       >
-        Redactar correo de solicitud de borrado ↗
+        {developerInfo.contactEmail}
       </a>
     </section>
+  </div>
 
-    <!-- Section: Types of data deleted -->
+  <!-- ==================== ENGLISH VERSION ==================== -->
+  <div data-lang="en" class="hidden space-y-8">
+    <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+      <strong class="font-bold text-white block mb-2 text-base">
+        Local Storage and No-Account Architecture:
+      </strong>
+      <strong class="text-white">{app.nameEn}</strong> has no accounts and stores no data off your phone, so we hold no data about you to delete on external servers.
+    </div>
+
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">3. Tipos de Datos que se Eliminan</h2>
-      <ul class="space-y-2">
-        {app.dataDeletion.deletedDataTypes.map((type) => (
-          <li class="flex items-center gap-2 text-sm text-slate-300">
-            <span class="text-red-400 font-bold">✕</span>
-            <span>{type}</span>
-          </li>
-        ))}
-      </ul>
+      <h2 class="text-xl font-bold text-white mb-3">How to completely delete your local data</h2>
+      <p class="text-slate-300 mb-4">
+        To remove everything the app stores (such as alarms and settings), you can follow either of these immediate methods on your device:
+      </p>
+
+      <div class="space-y-4">
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">1</span>
+            Clear data in Android Settings
+          </h3>
+          <p class="text-sm text-slate-300">
+            Go to: <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Android Settings → Apps → {app.nameEn} → Storage → Clear data</code>.
+          </p>
+          <p class="text-xs text-slate-400 mt-2">
+            This immediately resets the app back to its default clean install state.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">2</span>
+            Uninstall the application
+          </h3>
+          <p class="text-sm text-slate-300">
+            Uninstalling the app automatically and irreversibly removes all local databases, settings, and alarms from your device.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <!-- Section: Retained data if applicable -->
-    {app.dataDeletion.retainedDataTypes && app.dataDeletion.retainedDataTypes.length > 0 && (
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3">4. Datos Retenidos por Obligación Legal</h2>
-        <p class="text-sm text-slate-400 mb-3">
-          En cumplimiento con las normativas fiscales y los términos del servicio de Google Play, existen ciertos registros que deben conservarse durante los períodos legales fijados:
-        </p>
-        <ul class="space-y-2">
-          {app.dataDeletion.retainedDataTypes.map((retained) => (
-            <li class="flex items-center gap-2 text-sm text-slate-400">
-              <span class="text-amber-400 font-bold">!</span>
-              <span>{retained}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    <!-- Section: Timeframe -->
-    <section>
-      <h2 class="text-xl font-bold text-white mb-3">5. Plazo de Tramitación</h2>
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h2 class="text-lg font-bold text-white mb-2">Support Contact</h2>
       <p class="text-sm text-slate-300">
-        Una vez recibida y confirmada la solicitud, el borrado de los datos se completará en un plazo máximo de 
-        <strong class="text-white">{app.dataDeletion.turnaroundDays} días naturales</strong>. Recibirás una confirmación por correo electrónico una vez finalizado el proceso.
+        For any questions or assistance regarding data handling, please write to:
       </p>
+      <a 
+        href={`mailto:${developerInfo.contactEmail}?subject=Data%20deletion%20inquiry%20-%20${encodeURIComponent(app.nameEn)}`} 
+        class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+      >
+        {developerInfo.contactEmail}
+      </a>
     </section>
   </div>
 </LegalLayout>

@@ -16,147 +16,292 @@ interface Props {
 const { app } = Astro.props;
 ---
 
-<LegalLayout 
-  app={app} 
-  documentType="privacy"
-  title={`Política de Privacidad de ${app.name}`}
->
-  <div class="space-y-8">
-    <!-- Intro Callout -->
+<LegalLayout app={app} documentType="privacy">
+  <!-- ==================== SPANISH VERSION ==================== -->
+  <div data-lang="es" class="space-y-8">
     <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
-      <strong class="font-semibold block mb-1 text-white">Resumen de Privacidad:</strong>
-      {app.privacyPolicy.summary}
+      <strong class="font-semibold block mb-1 text-white">En resumen:</strong>
+      Alarma con desafíos no recopila, transmite, vende ni comparte ningún dato tuyo. La app no tiene permiso para acceder a internet, así que no puede enviar nada fuera de tu teléfono. Todo lo que configuras se queda en tu dispositivo.
     </div>
 
-    <!-- Section 1 -->
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">1. Responsable del Tratamiento de los Datos</h2>
+      <h2 class="text-xl font-bold text-white mb-3">Qué datos recopilamos</h2>
       <p>
-        El responsable del desarrollo y distribución de la aplicación <strong class="text-white">{app.name}</strong> es 
-        <strong class="text-white">{developerInfo.name}</strong> (marca comercial <strong class="text-white">{developerInfo.brandName}</strong>).
-      </p>
-      <p class="mt-2">
-        Si tienes preguntas, dudas o inquietudes sobre cómo se gestiona tu información, puedes ponerte en contacto directo con nosotros en el correo electrónico oficial de soporte técnico:
-        <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline font-medium">
-          {developerInfo.contactEmail}
-        </a>.
+        Ninguno. La app no recopila información personal, datos de uso, analíticas, informes de errores ni identificadores publicitarios. No hay cuentas ni registro.
       </p>
     </section>
 
-    <!-- Section 2 -->
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">2. Información y Datos Recopilados</h2>
-      {app.privacyPolicy.collectsPersonalData ? (
-        <p>
-          Esta aplicación puede recopilar ciertos datos necesarios para su correcto funcionamiento, tales como identificadores anónimos de dispositivo para diagnósticos y métricas de rendimiento.
-        </p>
-      ) : (
-        <p>
-          <strong class="text-white">{app.name}</strong> está diseñada bajo el principio de <em>Privacidad desde el Diseño</em> (Privacy by Design). 
-          <strong> No recopilamos, no almacenamos en servidores remotos ni vendemos información personal identificable</strong> (como tu nombre, dirección postal, número telefónico o credenciales bancarias).
-        </p>
-      )}
-      <p class="mt-2">
-        Cualquier dato generado durante el uso de la aplicación (como notas, historiales o configuraciones personalizadas) se guarda de manera local y encriptada en el propio almacenamiento interno de tu dispositivo Android.
-      </p>
-    </section>
-
-    <!-- Section 3: Android Permissions -->
-    <section>
-      <h2 class="text-xl font-bold text-white mb-3">3. Permisos de Android Solicitados</h2>
-      <p class="mb-4">
-        Para prestar sus servicios esenciales, la aplicación solicita al sistema operativo Android los siguientes permisos mínimos indispensables:
-      </p>
-
-      <div class="space-y-3">
-        {app.privacyPolicy.permissions.map((perm) => (
-          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-            <span class="font-mono text-xs text-indigo-400 font-semibold block mb-1">
-              {perm.name}
-            </span>
-            <p class="text-sm text-slate-300">
-              {perm.purpose}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Section 4: Third Party SDKs -->
-    <section>
-      <h2 class="text-xl font-bold text-white mb-3">4. Servicios y Librerías de Terceros</h2>
-      <p class="mb-3">
-        La aplicación puede apoyarse en servicios de infraestructura provistos por plataformas tecnológicas de confianza para la gestión de descargas y comprobación de integridad:
-      </p>
-
-      <ul class="space-y-3">
-        {app.privacyPolicy.thirdPartyServices.map((service) => (
-          <li class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-            <div class="flex items-center justify-between gap-2 mb-1">
-              <strong class="text-white text-sm">{service.name}</strong>
-              <a 
-                href={service.url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="text-xs text-indigo-400 hover:underline"
-              >
-                Política de privacidad ↗
-              </a>
-            </div>
-            <p class="text-xs text-slate-400">{service.purpose}</p>
-          </li>
-        ))}
+      <h2 class="text-xl font-bold text-white mb-3">Qué guarda la app en tu teléfono</h2>
+      <ul class="list-disc pl-5 space-y-2 text-slate-300">
+        <li>
+          <strong class="text-white">Tus alarmas:</strong> hora, días, etiqueta, sonido, vibración, desafío, dificultad y pre-alarma.
+        </li>
+        <li>
+          <strong class="text-white">Tus ajustes:</strong> tema, formato de hora, valores por defecto para alarmas nuevas y duración máxima de la alarma.
+        </li>
+        <li>
+          <strong class="text-white">El estado de la alarma que está sonando</strong>, para que no se pierda si el teléfono cierra la app o se reinicia mientras suena.
+        </li>
       </ul>
+      <p class="mt-3">
+        Todo se guarda solo en el almacenamiento local de la app. Nada de esto se envía a ningún sitio.
+      </p>
     </section>
 
-    <!-- Section 5: Data Retention -->
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">5. Retención y Conservación de los Datos</h2>
+      <h2 class="text-xl font-bold text-white mb-3">Copias de seguridad</h2>
       <p>
-        {app.privacyPolicy.dataRetentionText}
+        La copia de seguridad en la nube y la transferencia entre dispositivos están desactivadas para esta app. Tus alarmas no viajan a los servidores de Google ni a un teléfono nuevo. Si cambias de teléfono, tendrás que crearlas de nuevo.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Permisos y para qué se usan</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 my-4">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-900/80 text-white font-semibold border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-4">Permiso</th>
+              <th class="py-3 px-4">Para qué se utiliza</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 bg-slate-950/40 text-slate-300">
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Alarmas exactas</td>
+              <td class="py-3 px-4">Que la alarma suene a la hora exacta</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Notificaciones</td>
+              <td class="py-3 px-4">Mostrar la alarma y la pre-alarma</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Notificaciones a pantalla completa</td>
+              <td class="py-3 px-4">Mostrar el desafío sobre la pantalla de bloqueo</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Servicio en primer plano (reproducción)</td>
+              <td class="py-3 px-4">Mantener el sonido de la alarma hasta que la apagas</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Mantener el dispositivo activo</td>
+              <td class="py-3 px-4">Que el teléfono no se duerma mientras suena</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Vibración</td>
+              <td class="py-3 px-4">Vibrar con la alarma</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Cambiar ajustes de audio</td>
+              <td class="py-3 px-4">Recuperar el volumen de la alarma si lo bajas mientras suena</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Iniciar al arrancar</td>
+              <td class="py-3 px-4">Volver a programar las alarmas tras reiniciar el teléfono</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Mostrar sobre otras apps (opcional)</td>
+              <td class="py-3 px-4">Volver a mostrar el desafío si pulsas Inicio mientras suena</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-3">
+        La app <strong class="text-white">no pide</strong> acceso a internet, contactos, fotos, archivos multimedia, ubicación, cámara ni micrófono.
+      </p>
+
+      <div class="mt-4 p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-sm">
+        <p>
+          <strong class="text-white">Mostrar sobre otras apps:</strong> Android no deja que una app en segundo plano vuelva a ponerse delante. Sin este permiso, pulsar Inicio escondería el desafío mientras la alarma sigue sonando. La app lo usa solo para eso y solo mientras suena una alarma: no dibuja nada encima de otras apps ni ve lo que hay en pantalla. Puedes no concederlo. La alarma sonará igual, y podrás volver al desafío desde la notificación.
+        </p>
+        <p>
+          <strong class="text-white">Sensor de movimiento:</strong> El desafío "Sacudir" cuenta las sacudidas con el acelerómetro, solo mientras ese desafío está en pantalla. Los datos del sensor no se guardan.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Sonidos</h2>
+      <p>
+        El selector muestra los tonos de alarma que trae tu teléfono. Android permite verlos sin pedir permiso. Si eliges un archivo de audio propio, lo eliges tú con el selector de archivos del sistema, y la app solo guarda la referencia a ese archivo. La app no lee tu biblioteca de música, y el archivo no se copia, no se sube ni sale de tu teléfono.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Terceros</h2>
+      <p>
+        Ninguno. La app no incluye publicidad, analíticas ni herramientas de informes de errores. No comparte nada con nadie.
       </p>
       <p class="mt-2">
-        Para conocer el procedimiento de eliminación de datos de conformidad con las directrices de Google Play, consulta nuestro apartado específico de 
-        <a href={`/apps/${app.slug}/data-deletion/`} class="text-indigo-400 hover:underline font-medium">
-          Eliminación de Cuenta y Datos
-        </a>.
+        La compra se hace a través de Google Play. Los datos de pago los gestiona Google según su propia política de privacidad, y nosotros no tenemos acceso a ellos.
       </p>
     </section>
 
-    <!-- Section 6: Children Privacy -->
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">6. Privacidad de Menores (COPPA y Familias de Google Play)</h2>
+      <h2 class="text-xl font-bold text-white mb-3">Menores</h2>
       <p>
-        {app.privacyPolicy.childrenPrivacyText || "Nuestros servicios no están orientados a niños menores de 13 años. No recopilamos deliberadamente información personal de niños. Si eres padre, madre o tutor y sospechas que un menor nos ha facilitado información personal, contáctanos inmediatamente para proceder a su eliminación definitiva."}
+        La app no está dirigida a menores de 13 años. Como no recopila datos de nadie, tampoco recopila datos de menores.
       </p>
     </section>
 
-    <!-- Section 7: Security -->
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">7. Seguridad de la Información</h2>
+      <h2 class="text-xl font-bold text-white mb-3">Tus derechos</h2>
       <p>
-        Adoptamos medidas técnicas y organizativas adecuadas para proteger cualquier información frente al acceso no autorizado, alteración, divulgación o destrucción. Dado que los datos residen en tu propio dispositivo, te aconsejamos mantener actualizado el sistema operativo Android y contar con un método de bloqueo de pantalla seguro.
+        Como no tratamos datos personales tuyos, no hay nada que podamos consultar, corregir, exportar ni borrar. Tus datos están en tu teléfono y los controlas tú: si desinstalas la app o borras sus datos desde los ajustes de Android, se eliminan por completo. Si tienes cualquier pregunta, escríbenos a 
+        <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
       </p>
     </section>
 
-    <!-- Section 8: Changes -->
     <section>
-      <h2 class="text-xl font-bold text-white mb-3">8. Actualizaciones de esta Política</h2>
+      <h2 class="text-xl font-bold text-white mb-3">Cambios en esta política</h2>
       <p>
-        Podemos actualizar periódicamente esta Política de Privacidad para reflejar modificaciones operativas, legales o reglamentarias. Cualquier actualización se publicará directamente en esta página web con la fecha de revisión correspondiente.
+        Si esta política cambia, publicaremos la nueva versión en esta misma dirección con su fecha. Si algún cambio afectara a cómo se tratan tus datos, lo indicaríamos también en las notas de la versión de la app.
+      </p>
+    </section>
+  </div>
+
+  <!-- ==================== ENGLISH VERSION ==================== -->
+  <div data-lang="en" class="hidden space-y-8">
+    <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+      <strong class="font-semibold block mb-1 text-white">In short:</strong>
+      Alarm With Challenges does not collect, transmit, sell or share any of your data. The app has no permission to access the internet, so it cannot send anything off your phone. Everything you set up stays on your device.
+    </div>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">What data we collect</h2>
+      <p>
+        None. The app collects no personal information, usage data, analytics, crash reports or advertising identifiers. There are no accounts and no sign-up.
       </p>
     </section>
 
-    <!-- Section 9: Contact -->
-    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-      <h2 class="text-lg font-bold text-white mb-2">9. Contacto Oficial de Privacidad</h2>
-      <p class="text-sm text-slate-300">
-        Para cualquier duda, solicitud o aclaración relativa a esta política o al tratamiento de tus datos en <strong class="text-white">{app.name}</strong>, puedes comunicarte con:
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">What the app stores on your phone</h2>
+      <ul class="list-disc pl-5 space-y-2 text-slate-300">
+        <li>
+          <strong class="text-white">Your alarms:</strong> time, days, label, sound, vibration, challenge, difficulty and pre-alarm.
+        </li>
+        <li>
+          <strong class="text-white">Your settings:</strong> theme, time format, defaults for new alarms and the maximum alarm duration.
+        </li>
+        <li>
+          <strong class="text-white">The state of the alarm that is ringing</strong>, so it is not lost if the phone closes the app or restarts while it rings.
+        </li>
+      </ul>
+      <p class="mt-3">
+        All of it is kept only in the app's local storage. None of it is sent anywhere.
       </p>
-      <div class="mt-3 text-sm">
-        <p class="text-white font-semibold">{developerInfo.name} · {developerInfo.brandName}</p>
-        <p class="text-slate-400">Correo electrónico: <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a></p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Backups</h2>
+      <p>
+        Cloud backup and device-to-device transfer are turned off for this app. Your alarms do not travel to Google's servers or to a new phone. If you change phones, you will need to create them again.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Permissions and what they are for</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 my-4">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-900/80 text-white font-semibold border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-4">Permission</th>
+              <th class="py-3 px-4">What for</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 bg-slate-950/40 text-slate-300">
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Exact alarms</td>
+              <td class="py-3 px-4">Ringing at the exact time</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Notifications</td>
+              <td class="py-3 px-4">Showing the alarm and the pre-alarm</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Full-screen notifications</td>
+              <td class="py-3 px-4">Showing the challenge over the lock screen</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Foreground service (playback)</td>
+              <td class="py-3 px-4">Keeping the alarm sound going until you turn it off</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Keep the device awake</td>
+              <td class="py-3 px-4">Stopping the phone from sleeping while it rings</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Vibration</td>
+              <td class="py-3 px-4">Vibrating with the alarm</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Change audio settings</td>
+              <td class="py-3 px-4">Bringing the alarm volume back up if you turn it down while it rings</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Run at startup</td>
+              <td class="py-3 px-4">Rescheduling alarms after the phone restarts</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-slate-200">Display over other apps (optional)</td>
+              <td class="py-3 px-4">Bringing the challenge back if you press Home while it rings</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <p class="mt-3">
+        The app <strong class="text-white">does not ask</strong> for internet, contacts, photos, media files, location, camera or microphone access.
+      </p>
+
+      <div class="mt-4 p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-sm">
+        <p>
+          <strong class="text-white">Display over other apps:</strong> Android does not let a background app bring itself back to the front. Without this permission, pressing Home would hide the challenge while the alarm keeps ringing. The app uses it for that alone, and only while an alarm is ringing: it draws nothing over other apps and cannot see what is on screen. You can decline it. The alarm will still ring, and you can return to the challenge from the notification.
+        </p>
+        <p>
+          <strong class="text-white">Motion sensor:</strong> The "Shake" challenge counts shakes with the accelerometer, only while that challenge is on screen. Sensor data is not stored.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Sounds</h2>
+      <p>
+        The picker lists the alarm tones that come with your phone, which Android lets apps see without a permission. If you pick an audio file of your own, you choose it in the system file picker, and the app stores only a reference to that file. The app does not read your music library, and the file is not copied, uploaded or sent off your phone.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Third parties</h2>
+      <p>
+        None. The app contains no advertising, analytics or crash-reporting tools. It shares nothing with anyone.
+      </p>
+      <p class="mt-2">
+        The purchase is made through Google Play. Payment details are handled by Google under its own privacy policy, and we have no access to them.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Children</h2>
+      <p>
+        The app is not directed at children under 13. Since it collects no data from anyone, it collects none from children either.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Your rights</h2>
+      <p>
+        Because we process no personal data about you, there is nothing for us to access, correct, export or delete. Your data is on your phone and under your control: uninstalling the app, or clearing its data in Android settings, removes it completely. For any question, write to 
+        <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-3">Changes to this policy</h2>
+      <p>
+        If this policy changes, we will publish the new version at this same address, with its date. If a change affected how your data is handled, we would also say so in the app's release notes.
+      </p>
     </section>
   </div>
 </LegalLayout>

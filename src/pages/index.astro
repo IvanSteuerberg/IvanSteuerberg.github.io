@@ -167,21 +167,13 @@ import { developerInfo, apps } from '../data/apps';
             </div>
 
             <!-- Direct Google Play Legal Links -->
-            <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+            <div class="flex flex-wrap items-center justify-between text-xs text-slate-400 pt-1 gap-1">
               <a 
                 href={`/apps/${app.slug}/privacy-policy/`} 
                 class="hover:text-indigo-400 transition-colors underline underline-offset-2"
                 title="URL para Google Play Console"
               >
-                Política de Privacidad
-              </a>
-              <span class="text-slate-700">•</span>
-              <a 
-                href={`/apps/${app.slug}/data-deletion/`} 
-                class="hover:text-indigo-400 transition-colors underline underline-offset-2"
-                title="URL de solicitud de borrado de datos"
-              >
-                Borrado de Datos
+                Privacidad
               </a>
               <span class="text-slate-700">•</span>
               <a 
@@ -189,6 +181,21 @@ import { developerInfo, apps } from '../data/apps';
                 class="hover:text-indigo-400 transition-colors underline underline-offset-2"
               >
                 Términos
+              </a>
+              <span class="text-slate-700">•</span>
+              <a 
+                href={`/apps/${app.slug}/support/`} 
+                class="hover:text-indigo-400 transition-colors underline underline-offset-2"
+              >
+                Soporte
+              </a>
+              <span class="text-slate-700">•</span>
+              <a 
+                href={`/apps/${app.slug}/data-deletion/`} 
+                class="hover:text-indigo-400 transition-colors underline underline-offset-2"
+                title="URL de solicitud de borrado de datos"
+              >
+                Borrado
               </a>
             </div>
           </div>

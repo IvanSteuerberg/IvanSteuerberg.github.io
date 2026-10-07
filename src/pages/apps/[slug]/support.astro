@@ -1,0 +1,187 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { apps, developerInfo, type AppData } from '../../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({
+    params: { slug: app.slug },
+    props: { app },
+  }));
+}
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<LegalLayout app={app} documentType="support">
+  <!-- ==================== SPANISH VERSION ==================== -->
+  <div data-lang="es" class="space-y-8">
+    <div class="p-6 rounded-2xl bg-indigo-950/40 border border-indigo-900/60 text-slate-200 text-sm">
+      <h2 class="text-lg font-bold text-white mb-1">¿Necesitas ayuda con {app.name}?</h2>
+      <p>
+        Escríbenos directamente a <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>. Si nos cuentas el modelo de tu teléfono y tu versión de Android, podremos ayudarte antes.
+      </p>
+    </div>
+
+    <!-- Troubleshooting FAQ -->
+    <div class="space-y-6">
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> La alarma no ha sonado
+        </h3>
+        <ol class="list-decimal pl-5 space-y-2 text-slate-300 text-sm">
+          <li>
+            Abre la app y entra en <strong class="text-white">Ajustes</strong>. La sección de fiabilidad indica si falta algún permiso o si el ahorro de batería puede impedir que suene. Pulsa en cada aviso para resolverlo.
+          </li>
+          <li>
+            Algunos fabricantes, como <strong class="text-white">Xiaomi, OPPO, Realme, OnePlus, Huawei o Samsung</strong>, tienen un ahorro de batería propio, además del de Android. Busca la app en los ajustes de batería del teléfono y quítale las restricciones, o permite que se ejecute en segundo plano.
+          </li>
+          <li>
+            No fuerces la detención de la app desde los ajustes de Android: así se cancelan sus alarmas hasta que la vuelvas a abrir.
+          </li>
+        </ol>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> Al pulsar Inicio, el desafío desaparece
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Concede el permiso <strong class="text-white">Mostrar sobre otras apps</strong>: la app avisa en la pantalla principal si falta. Con él, el desafío vuelve a aparecer. Sin él, puedes volver al desafío tocando la notificación de la alarma.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> ¿Se puede posponer?
+        </h3>
+        <p class="text-slate-300 text-sm">
+          No. Es una decisión de diseño: posponer es justo lo que la app quiere evitar. Si te cuesta despertarte de golpe, usa la <strong class="text-white">pre-alarma</strong>, un aviso suave entre 1 y 30 minutos antes de la alarma principal.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> No consigo resolver el desafío
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Antes de confiarle tu mañana, prueba cada desafío desde la pantalla de la alarma con <strong class="text-white">Probar desafío</strong>, y baja la dificultad si hace falta. En matemáticas, si fallas, la operación cambia. En cualquier caso, la alarma se detiene sola cuando pasa la duración máxima que hayas elegido en Ajustes.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> ¿Puedo usar mis propios sonidos?
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Sí. Puedes elegir uno de los tonos de la app, el tono de alarma de tu teléfono, cualquier otro tono de alarma del sistema o un archivo de audio tuyo.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> He cambiado de teléfono y no están mis alarmas
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Es normal: las alarmas solo se guardan en el teléfono, sin copia en la nube, por privacidad. Tendrás que crearlas de nuevo en el teléfono nuevo.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">📱</span> Requisitos de la Aplicación
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Android 10 o superior. Disponible en español e inglés. Funciona 100% sin conexión a internet.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <!-- ==================== ENGLISH VERSION ==================== -->
+  <div data-lang="en" class="hidden space-y-8">
+    <div class="p-6 rounded-2xl bg-indigo-950/40 border border-indigo-900/60 text-slate-200 text-sm">
+      <h2 class="text-lg font-bold text-white mb-1">Need help with {app.nameEn}?</h2>
+      <p>
+        Write directly to <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>. If you tell us your phone model and Android version, we can help you sooner.
+      </p>
+    </div>
+
+    <!-- Troubleshooting FAQ -->
+    <div class="space-y-6">
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> The alarm did not ring
+        </h3>
+        <ol class="list-decimal pl-5 space-y-2 text-slate-300 text-sm">
+          <li>
+            Open the app and go to <strong class="text-white">Settings</strong>. The reliability section tells you if a permission is missing or battery saving could stop it ringing. Tap each warning to fix it.
+          </li>
+          <li>
+            Some phone makers, such as <strong class="text-white">Xiaomi, OPPO, Realme, OnePlus, Huawei or Samsung</strong>, add their own battery saver on top of Android's. Find the app in your phone's battery settings and remove its restrictions, or allow it to run in the background.
+          </li>
+          <li>
+            Do not force-stop the app from Android settings: that cancels its alarms until you open it again.
+          </li>
+        </ol>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> Pressing Home makes the challenge disappear
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Grant <strong class="text-white">Display over other apps</strong>: the app warns you on its main screen if it is missing. With it, the challenge comes back. Without it, you can return to the challenge by tapping the alarm notification.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> Can I snooze?
+        </h3>
+        <p class="text-slate-300 text-sm">
+          No. That is by design: snoozing is exactly what the app is there to stop. If waking up all at once is hard, use the <strong class="text-white">pre-alarm</strong>, a gentle heads-up 1 to 30 minutes before the main alarm.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> I can't solve the challenge
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Before trusting a challenge with your morning, try it from the alarm's screen with <strong class="text-white">Test challenge</strong>, and lower the difficulty if you need to. In math, a wrong answer changes the problem. Either way, the alarm stops on its own after the maximum duration you chose in Settings.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> Can I use my own sounds?
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Yes. You can choose one of the app's tones, your phone's alarm tone, any other system alarm tone, or an audio file of your own.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">❓</span> I changed phones and my alarms are gone
+        </h3>
+        <p class="text-slate-300 text-sm">
+          That is expected: for privacy, alarms are stored on the phone only, with no cloud backup. You will need to create them again on the new phone.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-indigo-400">📱</span> Requirements
+        </h3>
+        <p class="text-slate-300 text-sm">
+          Android 10 or later. Available in English and Spanish. Works offline.
+        </p>
+      </section>
+    </div>
+  </div>
+</LegalLayout>

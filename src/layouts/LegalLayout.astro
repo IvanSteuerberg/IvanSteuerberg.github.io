@@ -4,41 +4,70 @@ import { developerInfo, type AppData } from '../data/apps';
 
 interface Props {
   app: AppData;
-  documentType: 'privacy' | 'data-deletion' | 'terms';
-  title: string;
+  documentType: 'privacy' | 'data-deletion' | 'terms' | 'support';
+  title?: string;
 }
 
-const { app, documentType, title } = Astro.props;
+const { app, documentType } = Astro.props;
 
-const docLabels = {
+const docLabelsEs: Record<string, string> = {
   privacy: 'Política de Privacidad',
-  'data-deletion': 'Eliminación de Cuenta y Datos',
-  terms: 'Términos y Condiciones'
+  'data-deletion': 'Eliminación de Datos',
+  terms: 'Términos de Uso',
+  support: 'Soporte y Ayuda'
 };
 
-const currentLabel = docLabels[documentType];
+const docLabelsEn: Record<string, string> = {
+  privacy: 'Privacy Policy',
+  'data-deletion': 'Data Deletion',
+  terms: 'Terms of Use',
+  support: 'Support & Help'
+};
+
+const labelEs = docLabelsEs[documentType];
+const labelEn = docLabelsEn[documentType];
 ---
 
 <BaseLayout 
-  title={`${currentLabel} - ${app.name} | ${developerInfo.name}`}
-  description={`${currentLabel} oficial de la aplicación Android ${app.name} para Google Play Store.`}
+  title={`${labelEs} / ${labelEn} - ${app.name} | ${developerInfo.name}`}
+  description={`Documentación oficial de ${app.name} (${app.nameEn}) para Google Play Store.`}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
-    <!-- Breadcrumb -->
-    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 mb-6 overflow-x-auto whitespace-nowrap pb-2">
-      <a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a>
-      <span>/</span>
-      <a href="/#apps" class="hover:text-indigo-400 transition-colors">Apps</a>
-      <span>/</span>
-      <a href={`/apps/${app.slug}/`} class="hover:text-indigo-400 transition-colors font-medium text-slate-300">
-        {app.name}
-      </a>
-      <span>/</span>
-      <span class="text-indigo-400 font-semibold">{currentLabel}</span>
-    </nav>
+    <!-- Breadcrumb & Language Switcher -->
+    <div class="flex items-center justify-between gap-4 mb-6">
+      <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 overflow-x-auto whitespace-nowrap pb-1">
+        <a href="/" class="hover:text-indigo-400 transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="/#apps" class="hover:text-indigo-400 transition-colors">Apps</a>
+        <span>/</span>
+        <a href={`/apps/${app.slug}/`} class="hover:text-indigo-400 transition-colors font-medium text-slate-300">
+          {app.name}
+        </a>
+        <span>/</span>
+        <span class="text-indigo-400 font-semibold">{labelEs}</span>
+      </nav>
+
+      <!-- Language selector buttons -->
+      <div class="inline-flex items-center p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold shrink-0">
+        <button 
+          id="btn-lang-es"
+          type="button"
+          class="lang-btn px-3 py-1 rounded-lg bg-indigo-600 text-white transition-all cursor-pointer"
+        >
+          🇪🇸 ES
+        </button>
+        <button 
+          id="btn-lang-en"
+          type="button"
+          class="lang-btn px-3 py-1 rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer"
+        >
+          🇬🇧 EN
+        </button>
+      </div>
+    </div>
 
     <!-- Header Box -->
-    <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-xl mb-10">
+    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 shadow-xl mb-8">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
         <div class="flex items-center gap-4">
           <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.iconBg} flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/10`}>
@@ -46,16 +75,19 @@ const currentLabel = docLabels[documentType];
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                 Google Play Store
               </span>
               <span class="text-xs text-slate-400">v{app.version}</span>
+              <span class="text-xs text-slate-400">· {app.priceModel}</span>
             </div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">
-              {currentLabel}
+              <span class="lang-text-es">{labelEs}</span>
+              <span class="lang-text-en hidden">{labelEn}</span>
             </h1>
             <p class="text-sm text-slate-400">
-              Aplicación: <strong class="text-slate-200">{app.name}</strong>
+              <span class="lang-text-es">Aplicación: <strong class="text-slate-200">{app.name}</strong> (en inglés: <em>{app.nameEn}</em>)</span>
+              <span class="lang-text-en hidden">App: <strong class="text-slate-200">{app.nameEn}</strong> (Spanish: <em>{app.name}</em>)</span>
             </p>
           </div>
         </div>
@@ -64,13 +96,14 @@ const currentLabel = docLabels[documentType];
         <div class="flex items-center gap-2 self-start sm:self-center">
           <button 
             onclick="window.print()" 
-            class="px-3.5 py-2 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
-            title="Imprimir documento"
+            class="px-3.5 py-2 text-xs font-medium rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+            title="Imprimir documento / Print document"
           >
             <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
             </svg>
-            Imprimir / Guardar
+            <span class="lang-text-es">Imprimir / PDF</span>
+            <span class="lang-text-en hidden">Print / PDF</span>
           </button>
         </div>
       </div>
@@ -78,15 +111,16 @@ const currentLabel = docLabels[documentType];
       <!-- Legal Metadata Bar -->
       <div class="pt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
         <div>
-          <span>Última actualización: </span>
-          <strong class="text-slate-300">{app.privacyPolicy.lastUpdated}</strong>
+          <span class="lang-text-es">Última actualización: <strong class="text-slate-300">7 de octubre de 2026</strong></span>
+          <span class="lang-text-en hidden">Last updated: <strong class="text-slate-300">7 October 2026</strong></span>
         </div>
         <div>
-          <span>Desarrollador responsable: </span>
-          <strong class="text-slate-300">{developerInfo.name} ({developerInfo.brandName})</strong>
+          <span class="lang-text-es">Responsable: <strong class="text-slate-300">{developerInfo.name} ({developerInfo.brandName})</strong></span>
+          <span class="lang-text-en hidden">Controller: <strong class="text-slate-300">{developerInfo.name} ({developerInfo.brandName})</strong></span>
         </div>
         <div>
-          <span>Contacto de soporte: </span>
+          <span class="lang-text-es">Contacto: </span>
+          <span class="lang-text-en hidden">Contact: </span>
           <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">
             {developerInfo.contactEmail}
           </a>
@@ -94,66 +128,126 @@ const currentLabel = docLabels[documentType];
       </div>
     </div>
 
-    <!-- Legal Navigation Pills -->
+    <!-- Navigation Pills for all 4 sections -->
     <div class="flex items-center gap-2 mb-8 border-b border-slate-800/80 pb-4 overflow-x-auto text-xs sm:text-sm">
       <a 
         href={`/apps/${app.slug}/`}
-        class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors whitespace-nowrap"
+        class="px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors whitespace-nowrap"
       >
-        ← Volver a la ficha de la App
+        <span class="lang-text-es">← Ficha de la App</span>
+        <span class="lang-text-en hidden">← App Overview</span>
       </a>
       <span class="text-slate-700">|</span>
       <a 
         href={`/apps/${app.slug}/privacy-policy/`} 
-        class={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors ${
+        class={`px-3 py-1.5 rounded-xl font-medium whitespace-nowrap transition-colors ${
           documentType === 'privacy' 
             ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
             : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
         }`}
       >
-        Política de Privacidad
-      </a>
-      <a 
-        href={`/apps/${app.slug}/data-deletion/`} 
-        class={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors ${
-          documentType === 'data-deletion' 
-            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
-            : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-        }`}
-      >
-        Eliminación de Datos
+        <span class="lang-text-es">Privacidad</span>
+        <span class="lang-text-en hidden">Privacy</span>
       </a>
       <a 
         href={`/apps/${app.slug}/terms/`} 
-        class={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors ${
+        class={`px-3 py-1.5 rounded-xl font-medium whitespace-nowrap transition-colors ${
           documentType === 'terms' 
             ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
             : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
         }`}
       >
-        Términos de Uso
+        <span class="lang-text-es">Términos</span>
+        <span class="lang-text-en hidden">Terms</span>
+      </a>
+      <a 
+        href={`/apps/${app.slug}/support/`} 
+        class={`px-3 py-1.5 rounded-xl font-medium whitespace-nowrap transition-colors ${
+          documentType === 'support' 
+            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
+            : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+        }`}
+      >
+        <span class="lang-text-es">Soporte y FAQ</span>
+        <span class="lang-text-en hidden">Support & FAQ</span>
+      </a>
+      <a 
+        href={`/apps/${app.slug}/data-deletion/`} 
+        class={`px-3 py-1.5 rounded-xl font-medium whitespace-nowrap transition-colors ${
+          documentType === 'data-deletion' 
+            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30' 
+            : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+        }`}
+      >
+        <span class="lang-text-es">Borrado de Datos</span>
+        <span class="lang-text-en hidden">Data Deletion</span>
       </a>
     </div>
 
     <!-- Document Content Body -->
-    <article class="prose prose-invert max-w-none space-y-8 leading-relaxed text-slate-300 text-sm sm:text-base">
+    <article class="prose prose-invert max-w-none leading-relaxed text-slate-300 text-sm sm:text-base">
       <slot />
     </article>
 
-    <!-- Support Box for Google Play Reviewers & Users -->
-    <div class="mt-14 p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <!-- Support Box -->
+    <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
-        <h3 class="text-base font-bold text-white">¿Tienes dudas sobre esta política o necesitas asistencia?</h3>
+        <h3 class="text-base font-bold text-white">
+          <span class="lang-text-es">¿Preguntas sobre este documento o soporte?</span>
+          <span class="lang-text-en hidden">Questions regarding this document or support?</span>
+        </h3>
         <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Atendemos directamente solicitudes de soporte y derechos de privacidad ARCO/GDPR.
+          <span class="lang-text-es">Atención directa para usuarios de Google Play Store por correo electrónico.</span>
+          <span class="lang-text-en hidden">Direct email support for Google Play Store users.</span>
         </p>
       </div>
       <a 
-        href={`mailto:${developerInfo.contactEmail}?subject=Consulta%20Legal%20-%20${encodeURIComponent(app.name)}`}
-        class="px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/20 transition-colors whitespace-nowrap"
+        href={`mailto:${developerInfo.contactEmail}?subject=Consulta%20-${encodeURIComponent(app.name)}`}
+        class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/20 transition-colors whitespace-nowrap"
       >
-        Contactar desarrollador
+        {developerInfo.contactEmail}
       </a>
     </div>
   </div>
+
+  <!-- Client side script for language toggle -->
+  <script is:inline>
+    function setLanguage(lang) {
+      const isEn = lang === 'en';
+      document.querySelectorAll('.lang-text-es, [data-lang="es"]').forEach(el => {
+        el.classList.toggle('hidden', isEn);
+      });
+      document.querySelectorAll('.lang-text-en, [data-lang="en"]').forEach(el => {
+        el.classList.toggle('hidden', !isEn);
+      });
+
+      const btnEs = document.getElementById('btn-lang-es');
+      const btnEn = document.getElementById('btn-lang-en');
+
+      if (btnEs && btnEn) {
+        if (isEn) {
+          btnEn.className = 'lang-btn px-3 py-1 rounded-lg bg-indigo-600 text-white transition-all cursor-pointer';
+          btnEs.className = 'lang-btn px-3 py-1 rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer';
+        } else {
+          btnEs.className = 'lang-btn px-3 py-1 rounded-lg bg-indigo-600 text-white transition-all cursor-pointer';
+          btnEn.className = 'lang-btn px-3 py-1 rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer';
+        }
+      }
+
+      localStorage.setItem('doc-lang', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramLang = urlParams.get('lang');
+      const hashLang = window.location.hash === '#en' ? 'en' : (window.location.hash === '#es' ? 'es' : null);
+      const savedLang = localStorage.getItem('doc-lang');
+      const initialLang = paramLang || hashLang || savedLang || 'es';
+
+      setLanguage(initialLang);
+
+      document.getElementById('btn-lang-es')?.addEventListener('click', () => setLanguage('es'));
+      document.getElementById('btn-lang-en')?.addEventListener('click', () => setLanguage('en'));
+    });
+  </script>
 </BaseLayout>
