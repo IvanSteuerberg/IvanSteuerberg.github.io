@@ -1,0 +1,266 @@
+---
+import { developerInfo } from '../../../data/apps';
+---
+
+<!-- ==================== SPANISH VERSION ==================== -->
+<div data-lang="es" class="space-y-8">
+  <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+    <strong class="font-semibold block mb-1 text-white">En resumen:</strong>
+    Historial del Coche no recopila, no rastrea, no vende ni comparte tus datos personales. La aplicación está diseñada bajo una arquitectura estricta sin servidores propios: todos los datos de tus vehículos, fechas de inspección, registros de taller y fotografías de facturas se almacenan de forma local en la memoria interna de tu dispositivo. No existen cuentas de usuario, no hay publicidad y no hay herramientas de analítica ni telemetría.
+  </div>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Qué datos trata la aplicación</h2>
+    <p class="text-slate-300 mb-3">
+      La app almacena y procesa exclusivamente la información que tú decides registrar para confeccionar el historial de tu vehículo:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-slate-300">
+      <li>
+        <strong class="text-white">Datos del vehículo:</strong> matrícula, marca, modelo, año de fabricación, tipo de combustible, kilometraje inicial y, opcionalmente, número de bastidor (VIN) y fecha de primera matriculación.
+      </li>
+      <li>
+        <strong class="text-white">Vencimientos y alertas:</strong> fechas límites de Inspección Técnica de Vehículos (ITV), seguro obligatorio, impuesto de circulación (IVTM) y revisiones anuales o personalizadas.
+      </li>
+      <li>
+        <strong class="text-white">Intervenciones de taller:</strong> fecha del servicio, kilometraje en ese momento, categoría del trabajo (mantenimiento, frenos, neumáticos, etc.), nombre del taller o proveedor, importe económico y notas u observaciones.
+      </li>
+      <li>
+        <strong class="text-white">Comprobantes y facturas:</strong> imágenes escaneadas o importadas de hojas de taller, informes de ITV y facturas en formato JPEG o PDF.
+      </li>
+      <li>
+        <strong class="text-white">Versiones tapadas de comprobantes:</strong> imágenes derivadas generadas en tu dispositivo donde has cubierto voluntariamente datos personales o importes mediante rectángulos negros para proteger tu intimidad antes de compartir el dossier.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Dónde se guarda tu información</h2>
+    <p>
+      Toda la información se almacena estrictamente en el almacenamiento interno privado de la aplicación en tu dispositivo (base de datos local SQLite y directorio de archivos protegidos). Ninguna otra aplicación instalada en tu teléfono puede acceder a estos archivos.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Copias de seguridad y exportación</h2>
+    <div class="space-y-3">
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block mb-1">1. Copia de seguridad local (.zip):</strong>
+        <p class="text-xs text-slate-300">
+          Puedes generar en cualquier momento un archivo <code>.zip</code> comprimido que contiene tu base de datos y todas tus facturas, seleccionando tú mismo dónde guardarlo mediante el selector seguro de Android (Storage Access Framework).
+        </p>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block mb-1">2. Copia en Google Drive (función Pro opcional):</strong>
+        <p class="text-xs text-slate-300">
+          Si dispones de la versión Pro y decides activar la sincronización con Google Drive, la app subirá copias de seguridad exclusivamente a la carpeta oculta de datos de aplicación (<code>appDataFolder</code>) de <strong class="text-white">tu propia cuenta de Google</strong>. Ni nosotros ni ningún tercero tenemos acceso a tu cuenta de Drive ni a los archivos almacenados en ella.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Permisos solicitados y su finalidad</h2>
+    <div class="overflow-x-auto rounded-2xl border border-slate-800 my-4">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-900/80 text-white font-semibold border-b border-slate-800">
+          <tr>
+            <th class="py-3 px-4">Permiso</th>
+            <th class="py-3 px-4">Finalidad</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800/60 bg-slate-950/40 text-slate-300">
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Notificaciones (<code>POST_NOTIFICATIONS</code>)</td>
+            <td class="py-3 px-4">Mostrar recordatorios matinales cuando se aproxima la fecha de caducidad de tu ITV, seguro o revisión.</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Ejecución en segundo plano (<code>WorkManager</code>)</td>
+            <td class="py-3 px-4">Comprobar una vez al día las fechas de vencimiento para emitir los avisos del semáforo sin necesidad de que la app esté abierta.</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Acceso a archivos (selector del sistema)</td>
+            <td class="py-3 px-4">Importar facturas en PDF o imágenes de tu galería y exportar el archivo .zip o el dossier PDF generado. No se pide acceso general a toda tu memoria.</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Facturación de Google Play</td>
+            <td class="py-3 px-4">Procesar de forma segura la compra opcional de la versión Pro de pago único.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-sm text-slate-400 mt-2">
+      La aplicación <strong class="text-white">no solicita</strong> acceso a tu ubicación, tus contactos, tu micrófono, tus mensajes ni tu cuenta de teléfono. El escaneo de facturas se realiza localmente a través de Google Play Services ML Kit Document Scanner.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Tapado de datos personales en facturas (Privacidad para la venta)</h2>
+    <p>
+      Cuando compartes un dossier con un posible comprador, la aplicación incluye una herramienta de edición que te permite tapar datos sensibles en las fotos de tus facturas (como tu nombre, dirección particular, NIF o cuenta bancaria). Este proceso «quema» los rectángulos negros de manera irreversible directamente en los píxeles de una copia derivada de la imagen y elimina los metadatos EXIF de la cámara, preservando el archivo original intacto en tu dispositivo.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Servicios de terceros</h2>
+    <ul class="space-y-3">
+      <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block">Google Play Billing:</strong>
+        <p class="text-xs text-slate-400 mt-1">La compra de la versión Pro se tramita íntegramente a través de la pasarela de pagos de Google Play. Nosotros no recibimos, tratamos ni almacenamos ningún dato bancario o de tarjeta de crédito.</p>
+      </li>
+      <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block">Google Drive REST API:</strong>
+        <p class="text-xs text-slate-400 mt-1">Utilizada únicamente si el usuario Pro activa voluntariamente la copia en la nube privada.</p>
+      </li>
+      <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block">Google Play Services (ML Kit Document Scanner):</strong>
+        <p class="text-xs text-slate-400 mt-1">Utilizado para digitalizar facturas en papel directamente con la cámara del dispositivo de forma local.</p>
+      </li>
+    </ul>
+    <p class="text-sm text-slate-400 mt-3">
+      La aplicación <strong class="text-white">no incluye</strong> redes de publicidad (AdMob u otras), bibliotecas de analítica (Firebase Analytics, Google Analytics), ni herramientas de rastreo de fallos que recopilen telemetría (Crashlytics, Sentry).
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Tus derechos (RGPD / GDPR)</h2>
+    <ul class="list-disc pl-5 space-y-1.5 text-slate-300 text-sm">
+      <li><strong class="text-white">Acceso y Portabilidad:</strong> Puedes extraer la totalidad de tus datos en cualquier momento mediante la exportación de la copia local en <code>.zip</code> o la generación del Dossier PDF.</li>
+      <li><strong class="text-white">Rectificación y Supresión:</strong> Puedes editar o eliminar cualquier vehículo, visita, fecha o factura directamente desde la aplicación.</li>
+      <li><strong class="text-white">Eliminación total:</strong> Si desinstalas la aplicación o borras sus datos desde los Ajustes de Android, todos los datos almacenados en tu dispositivo se destruirán de forma inmediata e irrecuperable.</li>
+    </ul>
+    <p class="mt-4 text-sm">
+      Contacto de privacidad: <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
+    </p>
+  </section>
+</div>
+
+<!-- ==================== ENGLISH VERSION ==================== -->
+<div data-lang="en" class="hidden space-y-8">
+  <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+    <strong class="font-semibold block mb-1 text-white">In Short:</strong>
+    Historial del Coche does not collect, track, sell, or share your personal data. The app is built with a strict offline-first, serverless architecture: all vehicle details, inspection dates, workshop invoices, and receipts are stored locally on your device's internal storage. There are no user accounts, no advertisements, and no third-party analytics or telemetry trackers.
+  </div>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">What Data the App Handles</h2>
+    <p class="text-slate-300 mb-3">
+      The app stores only the data you choose to input to maintain your vehicle's documented history:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-slate-300">
+      <li>
+        <strong class="text-white">Vehicle details:</strong> license plate, make, model, year of manufacture, fuel type, initial mileage, and optional Vehicle Identification Number (VIN) and first registration date.
+      </li>
+      <li>
+        <strong class="text-white">Due dates and reminders:</strong> expiration dates for vehicle technical inspections (MOT/ITV), insurance policy, road tax, and annual services.
+      </li>
+      <li>
+        <strong class="text-white">Workshop service logs:</strong> service date, logged mileage, service category (maintenance, brakes, tires, etc.), workshop name, cost, and personal notes.
+      </li>
+      <li>
+        <strong class="text-white">Invoices and receipts:</strong> scanned or attached receipt images and PDF documents.
+      </li>
+      <li>
+        <strong class="text-white">Redacted receipts:</strong> derived image versions where you have manually covered sensitive data or prices with solid black rectangles to protect your privacy prior to sharing.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Where Your Data is Stored</h2>
+    <p>
+      All information is saved strictly within the private local storage sandbox of the application on your Android device (local SQLite database and internal files directory). No other app installed on your device can access these files.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Backups and Exporting</h2>
+    <div class="space-y-3">
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block mb-1">1. Local Backup (.zip):</strong>
+        <p class="text-xs text-slate-300">
+          You can generate a full <code>.zip</code> archive containing your entire database and documents at any time using Android's Storage Access Framework, allowing you to choose where to store it.
+        </p>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block mb-1">2. Google Drive Backup (optional Pro feature):</strong>
+        <p class="text-xs text-slate-300">
+          If you upgrade to Pro and choose to enable Google Drive backup, the application uploads your encrypted archive strictly to the hidden application data folder (<code>appDataFolder</code>) of <strong class="text-white">your own Google account</strong>. Neither we nor any third party have access to your Drive files.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Permissions and Purpose</h2>
+    <div class="overflow-x-auto rounded-2xl border border-slate-800 my-4">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-900/80 text-white font-semibold border-b border-slate-800">
+          <tr>
+            <th class="py-3 px-4">Permission</th>
+            <th class="py-3 px-4">Purpose</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800/60 bg-slate-950/40 text-slate-300">
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Notifications (<code>POST_NOTIFICATIONS</code>)</td>
+            <td class="py-3 px-4">Deliver morning alerts when an inspection, insurance, or maintenance due date is approaching.</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Background execution (<code>WorkManager</code>)</td>
+            <td class="py-3 px-4">Perform once-daily checks of due dates to update the traffic-light status without keeping the app open.</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Storage access (via system picker)</td>
+            <td class="py-3 px-4">Import invoice PDFs or images and save generated PDF dossiers or .zip backup files.</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Google Play Billing</td>
+            <td class="py-3 px-4">Securely process the optional one-time Pro license purchase.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-sm text-slate-400 mt-2">
+      The app <strong class="text-white">does not request</strong> access to your location, contacts, microphone, call logs, or phone identity. Document scanning uses Google Play Services ML Kit Document Scanner on-device.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Receipt Redaction and Privacy</h2>
+    <p>
+      Before sharing a vehicle dossier with potential buyers, you can use the built-in redaction editor to conceal sensitive personal data (such as your full name, home address, tax ID, or bank details). Redaction is permanently burned into the image pixels, strips original EXIF metadata, and preserves the original file untouched on your device.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Third-Party Services</h2>
+    <ul class="space-y-3">
+      <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block">Google Play Billing:</strong>
+        <p class="text-xs text-slate-400 mt-1">Used for purchasing the Pro lifetime license. We do not receive or process credit card numbers or banking data.</p>
+      </li>
+      <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block">Google Drive REST API:</strong>
+        <p class="text-xs text-slate-400 mt-1">Used solely if you explicitly enable cloud backup in your private Drive storage.</p>
+      </li>
+      <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <strong class="text-white text-sm block">Google Play Services:</strong>
+        <p class="text-xs text-slate-400 mt-1">Used for local on-device document scanning.</p>
+      </li>
+    </ul>
+    <p class="text-sm text-slate-400 mt-3">
+      The app contains <strong class="text-white">no advertising SDKs</strong>, no usage tracking, and no crash analytics.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Data Deletion and GDPR Rights</h2>
+    <ul class="list-disc pl-5 space-y-1.5 text-slate-300 text-sm">
+      <li><strong class="text-white">Access & Portability:</strong> You can export all your data at any time via <code>.zip</code> export or PDF dossier generation.</li>
+      <li><strong class="text-white">Erasure:</strong> Deleting an intervention or vehicle removes it immediately. Uninstalling the app completely purges all stored files and database entries from your device.</li>
+    </ul>
+    <p class="mt-4 text-sm">
+      Contact: <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
+    </p>
+  </section>
+</div>

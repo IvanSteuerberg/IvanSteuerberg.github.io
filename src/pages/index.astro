@@ -106,8 +106,12 @@ import { developerInfo, apps } from '../data/apps';
           <div>
             <div class="flex items-start justify-between gap-4 mb-4">
               <div class="flex items-center gap-3">
-                <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.iconBg} flex items-center justify-center text-2xl shadow-md`}>
-                  {app.iconEmoji}
+                <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.iconBg} flex items-center justify-center text-2xl shadow-md overflow-hidden shrink-0`}>
+                  {app.iconImage ? (
+                    <img src={app.iconImage} alt={app.name} class="w-full h-full object-cover" />
+                  ) : (
+                    app.iconEmoji
+                  )}
                 </div>
                 <div>
                   <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">
@@ -119,12 +123,18 @@ import { developerInfo, apps } from '../data/apps';
                 </div>
               </div>
 
-              {app.status === 'published' ? (
-                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              {app.status === 'published' && (
+                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
                   En Google Play
                 </span>
-              ) : (
-                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              )}
+              {app.status === 'beta' && (
+                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 whitespace-nowrap">
+                  Prueba Cerrada
+                </span>
+              )}
+              {app.status === 'coming_soon' && (
+                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 whitespace-nowrap">
                   Próximamente
                 </span>
               )}

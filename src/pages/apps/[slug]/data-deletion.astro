@@ -1,6 +1,8 @@
 ---
 import LegalLayout from '../../../layouts/LegalLayout.astro';
-import { apps, developerInfo, type AppData } from '../../../data/apps';
+import { apps, type AppData } from '../../../data/apps';
+import AlarmaDataDeletion from '../../../components/legal/alarma/DataDeletionContent.astro';
+import CocheDataDeletion from '../../../components/legal/coche/DataDeletionContent.astro';
 
 export function getStaticPaths() {
   return apps.map((app) => ({
@@ -17,113 +19,6 @@ const { app } = Astro.props;
 ---
 
 <LegalLayout app={app} documentType="data-deletion">
-  <!-- ==================== SPANISH VERSION ==================== -->
-  <div data-lang="es" class="space-y-8">
-    <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
-      <strong class="font-bold text-white block mb-2 text-base">
-        Política de Almacenamiento Local y Ausencia de Cuentas:
-      </strong>
-      <strong class="text-white">{app.name}</strong> no tiene cuentas y no guarda ningún dato fuera de tu teléfono, por lo que nosotros no almacenamos ni disponemos de datos tuyos que borrar en servidores externos.
-    </div>
-
-    <section>
-      <h2 class="text-xl font-bold text-white mb-3">Cómo eliminar tus datos locales por completo</h2>
-      <p class="text-slate-300 mb-4">
-        Para eliminar todo lo que la aplicación guarda localmente (como alarmas y ajustes configurados), dispones de dos vías inmediatas en tu dispositivo:
-      </p>
-
-      <div class="space-y-4">
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
-            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">1</span>
-            Borrar datos desde los Ajustes de Android
-          </h3>
-          <p class="text-sm text-slate-300">
-            Ve a: <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Ajustes de Android → Aplicaciones → {app.name} → Almacenamiento → Borrar datos</code>.
-          </p>
-          <p class="text-xs text-slate-400 mt-2">
-            Esta acción restablece la aplicación a su estado de fábrica de forma instantánea.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
-            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">2</span>
-            Desinstalar la aplicación
-          </h3>
-          <p class="text-sm text-slate-300">
-            Al desinstalar la app de tu teléfono, el sistema operativo Android elimina de manera irreversible e inmediata todos los archivos, configuraciones y registros locales asociados a la misma.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-      <h2 class="text-lg font-bold text-white mb-2">Contacto de asistencia</h2>
-      <p class="text-sm text-slate-300">
-        Si tienes cualquier duda o necesitas ayuda sobre el tratamiento de datos de la app, escríbenos directamente a:
-      </p>
-      <a 
-        href={`mailto:${developerInfo.contactEmail}?subject=Duda%20sobre%20eliminacion%20de%20datos%20-%20${encodeURIComponent(app.name)}`} 
-        class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
-      >
-        {developerInfo.contactEmail}
-      </a>
-    </section>
-  </div>
-
-  <!-- ==================== ENGLISH VERSION ==================== -->
-  <div data-lang="en" class="hidden space-y-8">
-    <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
-      <strong class="font-bold text-white block mb-2 text-base">
-        Local Storage and No-Account Architecture:
-      </strong>
-      <strong class="text-white">{app.nameEn}</strong> has no accounts and stores no data off your phone, so we hold no data about you to delete on external servers.
-    </div>
-
-    <section>
-      <h2 class="text-xl font-bold text-white mb-3">How to completely delete your local data</h2>
-      <p class="text-slate-300 mb-4">
-        To remove everything the app stores (such as alarms and settings), you can follow either of these immediate methods on your device:
-      </p>
-
-      <div class="space-y-4">
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
-            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">1</span>
-            Clear data in Android Settings
-          </h3>
-          <p class="text-sm text-slate-300">
-            Go to: <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Android Settings → Apps → {app.nameEn} → Storage → Clear data</code>.
-          </p>
-          <p class="text-xs text-slate-400 mt-2">
-            This immediately resets the app back to its default clean install state.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-          <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
-            <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">2</span>
-            Uninstall the application
-          </h3>
-          <p class="text-sm text-slate-300">
-            Uninstalling the app automatically and irreversibly removes all local databases, settings, and alarms from your device.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-      <h2 class="text-lg font-bold text-white mb-2">Support Contact</h2>
-      <p class="text-sm text-slate-300">
-        For any questions or assistance regarding data handling, please write to:
-      </p>
-      <a 
-        href={`mailto:${developerInfo.contactEmail}?subject=Data%20deletion%20inquiry%20-%20${encodeURIComponent(app.nameEn)}`} 
-        class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
-      >
-        {developerInfo.contactEmail}
-      </a>
-    </section>
-  </div>
+  {app.slug === 'alarma-con-desafios' && <AlarmaDataDeletion app={app} />}
+  {app.slug === 'historial-coche' && <CocheDataDeletion app={app} />}
 </LegalLayout>

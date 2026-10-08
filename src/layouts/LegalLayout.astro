@@ -70,8 +70,12 @@ const labelEn = docLabelsEn[documentType];
     <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 shadow-xl mb-8">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
         <div class="flex items-center gap-4">
-          <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.iconBg} flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/10`}>
-            {app.iconEmoji}
+          <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.iconBg} flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/10 overflow-hidden`}>
+            {app.iconImage ? (
+              <img src={app.iconImage} alt={app.name} class="w-full h-full object-cover" />
+            ) : (
+              app.iconEmoji
+            )}
           </div>
           <div>
             <div class="flex items-center gap-2">

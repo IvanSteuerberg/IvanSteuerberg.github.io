@@ -1,0 +1,149 @@
+---
+import { developerInfo, type AppData } from '../../../data/apps';
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<!-- ==================== SPANISH VERSION ==================== -->
+<div data-lang="es" class="space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+    <strong class="font-bold text-white block mb-2 text-base">
+      Almacenamiento Local y Privacidad de la Información:
+    </strong>
+    <strong class="text-white">{app.name}</strong> opera sin cuentas de usuario y almacena toda la información de tus vehículos exclusivamente de forma local en tu teléfono. Nosotros no alojamos servidores centrales con tus datos ni disponemos de copias de tus facturas.
+  </div>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">1. Eliminación de todos los datos locales</h2>
+    <p class="text-slate-300 mb-4">
+      Para borrar todos los vehículos, visitas, gastos y facturas almacenados en tu dispositivo, puedes emplear cualquiera de estos dos métodos:
+    </p>
+
+    <div class="space-y-4">
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">A</span>
+          Borrar datos desde los Ajustes de Android
+        </h3>
+        <p class="text-sm text-slate-300">
+          Ve a: <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Ajustes de Android → Aplicaciones → {app.name} → Almacenamiento → Borrar datos</code>.
+        </p>
+        <p class="text-xs text-slate-400 mt-2">
+          Esta acción destruye de forma inmediata y definitiva la base de datos local SQLite y todas las imágenes de facturas.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">B</span>
+          Desinstalar la aplicación
+        </h3>
+        <p class="text-sm text-slate-300">
+          Al desinstalar la app de tu teléfono, el sistema operativo Android elimina permanentemente el directorio protegido de la aplicación y todos sus archivos asociados.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">2. Eliminación de la copia en Google Drive (Usuarios Pro)</h2>
+    <p class="text-slate-300 mb-3">
+      Si activaste voluntariamente la copia de seguridad en Google Drive, puedes eliminar los archivos en la nube en cualquier momento:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+      <li>
+        <strong class="text-white">Desde la propia app:</strong> Abre la aplicación, entra en <em>Ajustes → Google Drive</em> y pulsa en <strong class="text-red-400">«Desconectar y borrar copia»</strong>.
+      </li>
+      <li>
+        <strong class="text-white">Desde tu cuenta de Google en cualquier navegador:</strong> Entra en Google Drive → <em>Configuración (icono engranaje) → Administrar aplicaciones → Historial del Coche → Opciones → Eliminar datos ocultos de la aplicación</em>.
+      </li>
+    </ul>
+  </section>
+
+  <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+    <h2 class="text-lg font-bold text-white mb-2">Contacto de soporte</h2>
+    <p class="text-sm text-slate-300">
+      Si necesitas ayuda adicional sobre el borrado o gestión de tus datos, contáctanos en:
+    </p>
+    <a 
+      href={`mailto:${developerInfo.contactEmail}?subject=Duda%20eliminacion%20de%20datos%20-${encodeURIComponent(app.name)}`} 
+      class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+    >
+      {developerInfo.contactEmail}
+    </a>
+  </section>
+</div>
+
+<!-- ==================== ENGLISH VERSION ==================== -->
+<div data-lang="en" class="hidden space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+    <strong class="font-bold text-white block mb-2 text-base">
+      Local Storage & Offline-First Architecture:
+    </strong>
+    <strong class="text-white">{app.nameEn}</strong> operates without user accounts and saves vehicle details and invoice images locally on your device. We do not operate external databases holding your data.
+  </div>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">1. Deleting all local device data</h2>
+    <p class="text-slate-300 mb-4">
+      To completely remove all vehicle logs, receipts, and settings, use either of the following steps:
+    </p>
+
+    <div class="space-y-4">
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">A</span>
+          Clear data in Android Settings
+        </h3>
+        <p class="text-sm text-slate-300">
+          Go to: <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Android Settings → Apps → {app.nameEn} → Storage → Clear data</code>.
+        </p>
+        <p class="text-xs text-slate-400 mt-2">
+          This immediately and permanently wipes the internal database and all stored invoice images.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">B</span>
+          Uninstall the app
+        </h3>
+        <p class="text-sm text-slate-300">
+          Uninstalling the application purges its isolated sandbox and permanently destroys all local files.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">2. Deleting Google Drive Cloud Backups (Pro Users)</h2>
+    <p class="text-slate-300 mb-3">
+      If you opted in to Google Drive sync, you can delete cloud backups at any time:
+    </p>
+    <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+      <li>
+        <strong class="text-white">From within the app:</strong> Open <em>Settings → Google Drive</em> and tap <strong class="text-red-400">«Disconnect and delete backup»</strong>.
+      </li>
+      <li>
+        <strong class="text-white">From your Google account web settings:</strong> Visit Google Drive on any web browser → <em>Settings → Manage Apps → Historial del Coche → Options → Delete hidden app data</em>.
+      </li>
+    </ul>
+  </section>
+
+  <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+    <h2 class="text-lg font-bold text-white mb-2">Support Contact</h2>
+    <p class="text-sm text-slate-300">
+      For questions regarding data erasure or account assistance, write to:
+    </p>
+    <a 
+      href={`mailto:${developerInfo.contactEmail}?subject=Data%20deletion%20inquiry%20-${encodeURIComponent(app.nameEn)}`} 
+      class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+    >
+      {developerInfo.contactEmail}
+    </a>
+  </section>
+</div>

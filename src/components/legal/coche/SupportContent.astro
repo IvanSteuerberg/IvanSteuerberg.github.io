@@ -1,0 +1,133 @@
+---
+import { developerInfo, type AppData } from '../../../data/apps';
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<!-- ==================== SPANISH VERSION ==================== -->
+<div data-lang="es" class="space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/40 border border-indigo-900/60 text-slate-200 text-sm">
+    <h2 class="text-lg font-bold text-white mb-1">¿Necesitas ayuda con {app.name}?</h2>
+    <p>
+      Escríbenos directamente a <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>.
+    </p>
+  </div>
+
+  <div class="space-y-6">
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">📄</span> 1. ¿Cómo genero mi Dossier PDF?
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Entra en la ficha de tu vehículo y pulsa en el botón <strong class="text-white">«Generar dossier PDF»</strong>. Podrás previsualizar el documento, seleccionar el perfil que mejor se adapte (Completo, Para el comprador o Anuncio público) y compartirlo directamente por WhatsApp, email o guardarlo en tu teléfono.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">🔒</span> 2. ¿Cómo tapo datos privados de mis facturas antes de enseñarlas?
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Al registrar una visita con factura, pulsa sobre la miniatura de la imagen en el botón <strong class="text-white">«Tapar datos»</strong>. Podrás dibujar rectángulos negros con el dedo sobre importes, nombres, direcciones o DNI. Esos rectángulos se graban de forma permanente e irreversible en una copia derivada sin alterar tu factura original.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">📲</span> 3. ¿Cómo paso mis datos a un móvil nuevo?
+      </h3>
+      <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+        <li>
+          <strong class="text-white">Copia local (.zip):</strong> En tu móvil antiguo, ve a <em>Ajustes → Copias de seguridad → Crear copia local (.zip)</em> y guarda el archivo en un pendrive, envíatelo por correo o súbelo a tu nube. En el móvil nuevo, descarga la app, pulsa en <em>«Ya tengo una copia de seguridad»</em> y selecciona el archivo <code>.zip</code>.
+        </li>
+        <li>
+          <strong class="text-white">Google Drive (Pro):</strong> En el móvil antiguo, pulsa <em>«Copiar ahora en Drive»</em>. En el móvil nuevo, activa Pro, conecta tu cuenta de Google Drive y pulsa <em>«Restaurar»</em>.
+        </li>
+      </ul>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">⭐</span> 4. He cambiado de móvil y no se reconoce mi compra Pro
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Ve a <em>Ajustes → Versión Pro → Restaurar compras</em>. Google Play verificará tu compra previa y reactivará la versión Pro automáticamente sin ningún coste adicional.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">⚙️</span> 5. Requisitos mínimos
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Android 8.0 (API 26) o superior. Funciona completamente sin conexión a internet.
+      </p>
+    </section>
+  </div>
+</div>
+
+<!-- ==================== ENGLISH VERSION ==================== -->
+<div data-lang="en" class="hidden space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/40 border border-indigo-900/60 text-slate-200 text-sm">
+    <h2 class="text-lg font-bold text-white mb-1">Need help with {app.nameEn}?</h2>
+    <p>
+      Write directly to <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>.
+    </p>
+  </div>
+
+  <div class="space-y-6">
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">📄</span> 1. How do I generate my PDF Dossier?
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Go to your vehicle file and tap <strong class="text-white">«Generate PDF Dossier»</strong>. You can preview the document, select your preferred profile (Full, For Buyer, or Public Listing), and share it via email, messaging, or save locally.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">🔒</span> 2. How do I redact private data on receipts?
+      </h3>
+      <p class="text-slate-300 text-sm">
+        When adding an intervention with an attached invoice, tap on the image thumbnail and select <strong class="text-white">«Redact Data»</strong>. Draw solid black rectangles over sensitive data (names, address, prices). The change is permanently burned into a derived copy without altering your original receipt.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">📲</span> 3. How do I transfer my data to a new phone?
+      </h3>
+      <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+        <li>
+          <strong class="text-white">Local Backup (.zip):</strong> On your old phone, go to <em>Settings → Backups → Create local .zip backup</em>. On the new phone, install the app, tap <em>«I already have a backup»</em> and select the <code>.zip</code> file.
+        </li>
+        <li>
+          <strong class="text-white">Google Drive (Pro):</strong> On the old phone, tap <em>«Backup to Drive»</em>. On the new phone, enable Pro, connect your Google Drive account and tap <em>«Restore»</em>.
+        </li>
+      </ul>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">⭐</span> 4. Pro purchase is not recognized on a new phone
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Go to <em>Settings → Pro Version → Restore Purchases</em>. Google Play will verify your existing license and restore it automatically at no additional charge.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">⚙️</span> 5. Minimum Requirements
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Android 8.0 (API 26) or later. Works completely offline.
+      </p>
+    </section>
+  </div>
+</div>
