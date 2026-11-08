@@ -27,7 +27,7 @@ página o sección independiente.
 
 **Alarma con desafíos** (en inglés, *Alarm With Challenges*)
 Responsable: {{TITULAR}} · Contacto: {{EMAIL}}
-Última actualización: 7 de octubre de 2026 · Versión de la app: 1.0.0
+Última actualización: 8 de noviembre de 2026 · Versión de la app: 1.1.0
 
 ### En resumen
 
@@ -44,11 +44,13 @@ registro.
 ### Qué guarda la app en tu teléfono
 
 - **Tus alarmas:** hora, días, etiqueta, sonido, vibración, desafío,
-  dificultad y pre-alarma.
+  dificultad, repeticiones, pre-alarma y comprobación «¿Sigues despierto?».
+- **Tu frase**, si usas el desafío «Tu frase»: el texto que escribes para
+  apagar esa alarma.
 - **Tus ajustes:** tema, formato de hora, valores por defecto para alarmas
   nuevas y duración máxima de la alarma.
-- **El estado de la alarma que está sonando**, para que no se pierda si el
-  teléfono cierra la app o se reinicia mientras suena.
+- **El estado de la alarma que está sonando y de la comprobación pendiente**,
+  para que no se pierdan si el teléfono cierra la app o se reinicia.
 
 Todo se guarda solo en el almacenamiento local de la app. Nada de esto se
 envía a ningún sitio.
@@ -71,6 +73,7 @@ ni a un teléfono nuevo. Si cambias de teléfono, tendrás que crearlas de nuevo
 | Vibración | Vibrar con la alarma |
 | Cambiar ajustes de audio | Recuperar el volumen de la alarma si lo bajas mientras suena |
 | Iniciar al arrancar | Volver a programar las alarmas tras reiniciar el teléfono |
+| Excluir de la optimización de batería (opcional) | Abrir, desde Ajustes, el aviso del sistema para que el ahorro de batería no retrase la alarma |
 | Mostrar sobre otras apps (opcional) | Volver a mostrar el desafío si pulsas Inicio mientras suena |
 
 La app **no pide** acceso a internet, contactos, fotos, archivos multimedia,
@@ -128,7 +131,7 @@ indicaríamos también en las notas de la versión de la app.
 
 **Alarm With Challenges** (Spanish: *Alarma con desafíos*)
 Controller: {{TITULAR}} · Contact: {{EMAIL}}
-Last updated: 7 October 2026 · App version: 1.0.0
+Last updated: 8 November 2026 · App version: 1.1.0
 
 ### In short
 
@@ -143,12 +146,14 @@ reports or advertising identifiers. There are no accounts and no sign-up.
 
 ### What the app stores on your phone
 
-- **Your alarms:** time, days, label, sound, vibration, challenge, difficulty
-  and pre-alarm.
+- **Your alarms:** time, days, label, sound, vibration, challenge, difficulty,
+  rounds, pre-alarm and the "Still awake?" check.
+- **Your phrase**, if you use the "Your phrase" challenge: the text you type to
+  turn that alarm off.
 - **Your settings:** theme, time format, defaults for new alarms and the
   maximum alarm duration.
-- **The state of the alarm that is ringing**, so it is not lost if the phone
-  closes the app or restarts while it rings.
+- **The state of the alarm that is ringing and of any pending check**, so they
+  are not lost if the phone closes the app or restarts.
 
 All of it is kept only in the app's local storage. None of it is sent
 anywhere.
@@ -171,6 +176,7 @@ phones, you will need to create them again.
 | Vibration | Vibrating with the alarm |
 | Change audio settings | Bringing the alarm volume back up if you turn it down while it rings |
 | Run at startup | Rescheduling alarms after the phone restarts |
+| Exclude from battery optimization (optional) | Opening, from Settings, the system prompt so battery saving does not delay the alarm |
 | Display over other apps (optional) | Bringing the challenge back if you press Home while it rings |
 
 The app **does not ask** for internet, contacts, photos, media files,
@@ -225,13 +231,14 @@ so in the app's release notes.
 ## Términos de uso
 
 **Alarma con desafíos** · {{TITULAR}} · {{EMAIL}}
-Última actualización: 7 de octubre de 2026
+Última actualización: 8 de noviembre de 2026
 
 ### 1. Qué es
 
 Alarma con desafíos es un despertador para Android que solo se apaga cuando
-completas un desafío: matemáticas, memoria, puzzle o sacudir el teléfono. No
-tiene botón de posponer. Al instalarla y usarla aceptas estos términos.
+completas un desafío: matemáticas, memoria, puzzle deslizante, sacudir el
+teléfono, tabla de números o una frase que eliges tú. No tiene botón de
+posponer. Al instalarla y usarla aceptas estos términos.
 
 ### 2. Compra y licencia
 
@@ -309,13 +316,13 @@ imperativas de protección del consumidor del país donde residas.
 ## Terms of use
 
 **Alarm With Challenges** · {{TITULAR}} · {{EMAIL}}
-Last updated: 7 October 2026
+Last updated: 8 November 2026
 
 ### 1. What it is
 
 Alarm With Challenges is an Android alarm clock that only turns off once you
-complete a challenge: math, memory, a sliding puzzle or shaking the phone. It
-has no snooze button. By installing and using it, you accept these terms.
+complete a challenge: math, memory, a sliding puzzle, shaking the phone, a
+number grid or a phrase you choose. It has no snooze button. By installing and using it, you accept these terms.
 
 ### 2. Purchase and licence
 
@@ -418,6 +425,13 @@ No. Es una decisión de diseño: posponer es justo lo que la app quiere evitar.
 Si te cuesta despertarte de golpe, usa la **pre-alarma**, un aviso suave entre
 1 y 30 minutos antes de la alarma principal.
 
+### ¿Qué es «¿Sigues despierto?»?
+
+Una comprobación opcional que activas en cada alarma. 5 o 10 minutos después de
+apagarla, aparece un aviso y tienes 60 segundos para confirmarlo con un toque.
+Si no lo haces, la alarma vuelve a sonar con su desafío, hasta 2
+comprobaciones. No es posponer: no te da más tiempo para dormir.
+
 ### No consigo resolver el desafío
 
 Antes de confiarle tu mañana, prueba cada desafío desde la pantalla de la
@@ -437,7 +451,8 @@ por privacidad. Tendrás que crearlas de nuevo en el teléfono nuevo.
 
 ### Requisitos
 
-Android 10 o superior. Disponible en español e inglés. Funciona sin conexión.
+Android 10 o superior. Disponible en español, inglés, francés, alemán, catalán
+y gallego. Funciona sin conexión.
 
 ---
 
@@ -470,6 +485,13 @@ No. That is by design: snoozing is exactly what the app is there to stop. If
 waking up all at once is hard, use the **pre-alarm**, a gentle heads-up 1 to 30
 minutes before the main alarm.
 
+### What is "Still awake?"
+
+An optional check you turn on for each alarm. 5 or 10 minutes after you turn
+the alarm off, a prompt appears and you have 60 seconds to confirm with one
+tap. If you don't, the alarm rings again with its challenge, up to 2 checks.
+It is not snooze: it never gives you more time to sleep.
+
 ### I can't solve the challenge
 
 Before trusting a challenge with your morning, try it from the alarm's screen
@@ -489,7 +511,8 @@ cloud backup. You will need to create them again on the new phone.
 
 ### Requirements
 
-Android 10 or later. Available in English and Spanish. Works offline.
+Android 10 or later. Available in English, Spanish, French, German, Catalan
+and Galician. Works offline.
 
 ---
 

@@ -20,13 +20,16 @@ import { developerInfo } from '../../../data/apps';
     <h2 class="text-xl font-bold text-white mb-3">Qué guarda la app en tu teléfono</h2>
     <ul class="list-disc pl-5 space-y-2 text-slate-300">
       <li>
-        <strong class="text-white">Tus alarmas:</strong> hora, días, etiqueta, sonido, vibración, desafío, dificultad y pre-alarma.
+        <strong class="text-white">Tus alarmas:</strong> hora, días, etiqueta, sonido, vibración, desafío, dificultad, repeticiones, pre-alarma y comprobación «¿Sigues despierto?».
+      </li>
+      <li>
+        <strong class="text-white">Tu frase</strong>, si usas el desafío «Tu frase»: el texto que escribes para apagar esa alarma.
       </li>
       <li>
         <strong class="text-white">Tus ajustes:</strong> tema, formato de hora, valores por defecto para alarmas nuevas y duración máxima de la alarma.
       </li>
       <li>
-        <strong class="text-white">El estado de la alarma que está sonando</strong>, para que no se pierda si el teléfono cierra la app o se reinicia mientras suena.
+        <strong class="text-white">El estado de la alarma que está sonando y de la comprobación pendiente</strong>, para que no se pierdan si el teléfono cierra la app o se reinicia.
       </li>
     </ul>
     <p class="mt-3">
@@ -83,6 +86,10 @@ import { developerInfo } from '../../../data/apps';
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Iniciar al arrancar</td>
             <td class="py-3 px-4">Volver a programar las alarmas tras reiniciar el teléfono</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Excluir de la optimización de batería (opcional)</td>
+            <td class="py-3 px-4">Abrir, desde Ajustes, el aviso del sistema para que el ahorro de batería no retrase la alarma</td>
           </tr>
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Mostrar sobre otras apps (opcional)</td>
@@ -164,13 +171,16 @@ import { developerInfo } from '../../../data/apps';
     <h2 class="text-xl font-bold text-white mb-3">What the app stores on your phone</h2>
     <ul class="list-disc pl-5 space-y-2 text-slate-300">
       <li>
-        <strong class="text-white">Your alarms:</strong> time, days, label, sound, vibration, challenge, difficulty and pre-alarm.
+        <strong class="text-white">Your alarms:</strong> time, days, label, sound, vibration, challenge, difficulty, rounds, pre-alarm and the “Still awake?” check.
+      </li>
+      <li>
+        <strong class="text-white">Your phrase</strong>, if you use the “Your phrase” challenge: the text you type to turn that alarm off.
       </li>
       <li>
         <strong class="text-white">Your settings:</strong> theme, time format, defaults for new alarms and the maximum alarm duration.
       </li>
       <li>
-        <strong class="text-white">The state of the alarm that is ringing</strong>, so it is not lost if the phone closes the app or restarts while it rings.
+        <strong class="text-white">The state of the alarm that is ringing and of any pending check</strong>, so they are not lost if the phone closes the app or restarts.
       </li>
     </ul>
     <p class="mt-3">
@@ -227,6 +237,10 @@ import { developerInfo } from '../../../data/apps';
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Run at startup</td>
             <td class="py-3 px-4">Rescheduling alarms after the phone restarts</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Exclude from battery optimization (optional)</td>
+            <td class="py-3 px-4">Opening, from Settings, the system prompt so battery saving does not delay the alarm</td>
           </tr>
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Display over other apps (optional)</td>
