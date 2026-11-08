@@ -1,0 +1,133 @@
+---
+import { developerInfo, type AppData } from '../../../data/apps';
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<!-- ==================== SPANISH VERSION ==================== -->
+<div data-lang="es" class="space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+    <strong class="font-bold text-white block mb-2 text-base">
+      Sin cuentas y sin servidores:
+    </strong>
+    <strong class="text-white">{app.name}</strong> no tiene cuentas y no envía tus partidas a ningún servidor, así que nosotros no guardamos datos tuyos que borrar. Todo está en tu teléfono.
+  </div>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Cómo borrar tus partidas</h2>
+    <p class="text-slate-300 mb-4">
+      Para borrar todo lo que guarda el juego (la vida en curso, el cementerio, los logros y las preferencias):
+    </p>
+
+    <div class="space-y-4">
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">1</span>
+          Borrar los datos desde los ajustes de Android
+        </h3>
+        <p class="text-sm text-slate-300">
+          Ve a <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Ajustes → Aplicaciones → {app.name} → Almacenamiento → Borrar datos</code>. El juego vuelve a quedar como recién instalado.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">2</span>
+          Desinstalar el juego
+        </h3>
+        <p class="text-sm text-slate-300">
+          Al desinstalarlo, Android borra todos sus archivos del teléfono.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">3</span>
+          Copia de seguridad de Google (si la tienes activada)
+        </h3>
+        <p class="text-sm text-slate-300">
+          Android puede guardar una copia de las partidas en tu cuenta de Google. Puedes borrarla o desactivarla desde los ajustes de copia de seguridad de Android o en Google One. Esa copia está en tu cuenta y nosotros no tenemos acceso a ella.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+    <h2 class="text-lg font-bold text-white mb-2">Correos que nos hayas enviado</h2>
+    <p class="text-sm text-slate-300">
+      Lo único que podemos tener tuyo son los mensajes que nos hayas enviado con «Enviar comentarios». Si quieres que los borremos, escríbenos desde la misma dirección y los eliminaremos en un plazo máximo de 30 días.
+    </p>
+    <a
+      href={`mailto:${developerInfo.contactEmail}?subject=Borrado%20de%20datos%20-%20${encodeURIComponent(app.name)}`}
+      class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+    >
+      {developerInfo.contactEmail}
+    </a>
+  </section>
+</div>
+
+<!-- ==================== ENGLISH VERSION ==================== -->
+<div data-lang="en" class="hidden space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
+    <strong class="font-bold text-white block mb-2 text-base">
+      No accounts, no servers:
+    </strong>
+    <strong class="text-white">{app.nameEn}</strong> has no accounts and never sends your lives to a server, so we hold no data about you to delete. Everything is on your phone.
+  </div>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">How to delete your lives</h2>
+    <p class="text-slate-300 mb-4">
+      To delete everything the game stores (the current life, the graveyard, achievements and preferences):
+    </p>
+
+    <div class="space-y-4">
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">1</span>
+          Clear the data in Android settings
+        </h3>
+        <p class="text-sm text-slate-300">
+          Go to <code class="px-2 py-1 rounded-lg bg-slate-950 text-indigo-300 text-xs font-mono">Settings → Apps → {app.nameEn} → Storage → Clear data</code>. The game goes back to a fresh install.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">2</span>
+          Uninstall the game
+        </h3>
+        <p class="text-sm text-slate-300">
+          When you uninstall it, Android deletes all of its files from your phone.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+        <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-indigo-600/20 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">3</span>
+          Google backup (if you have it on)
+        </h3>
+        <p class="text-sm text-slate-300">
+          Android may keep a copy of your lives in your Google account. You can delete it or turn it off in Android's backup settings or in Google One. That copy is in your account and we have no access to it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+    <h2 class="text-lg font-bold text-white mb-2">Emails you have sent us</h2>
+    <p class="text-sm text-slate-300">
+      The only thing of yours we may hold is a message you sent us with "Send feedback". If you want it deleted, write to us from the same address and we will delete it within 30 days.
+    </p>
+    <a
+      href={`mailto:${developerInfo.contactEmail}?subject=Data%20deletion%20-%20${encodeURIComponent(app.nameEn)}`}
+      class="inline-block mt-3 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors"
+    >
+      {developerInfo.contactEmail}
+    </a>
+  </section>
+</div>

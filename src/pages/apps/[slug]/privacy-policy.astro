@@ -3,6 +3,7 @@ import LegalLayout from '../../../layouts/LegalLayout.astro';
 import { apps, type AppData } from '../../../data/apps';
 import AlarmaPrivacy from '../../../components/legal/alarma/PrivacyContent.astro';
 import CochePrivacy from '../../../components/legal/coche/PrivacyContent.astro';
+import LifeseedPrivacy from '../../../components/legal/lifeseed/PrivacyContent.astro';
 
 export function getStaticPaths() {
   return apps.map((app) => ({
@@ -21,4 +22,5 @@ const { app } = Astro.props;
 <LegalLayout app={app} documentType="privacy">
   {app.slug === 'alarma-con-desafios' && <AlarmaPrivacy />}
   {app.slug === 'historial-coche' && <CochePrivacy />}
+  {app.slug === 'lifeseed' && <LifeseedPrivacy />}
 </LegalLayout>

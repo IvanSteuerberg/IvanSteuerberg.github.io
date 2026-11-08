@@ -1,0 +1,141 @@
+---
+import { developerInfo, type AppData } from '../../../data/apps';
+
+interface Props {
+  app: AppData;
+}
+
+const { app } = Astro.props;
+---
+
+<!-- ==================== SPANISH VERSION ==================== -->
+<div data-lang="es" class="space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/40 border border-indigo-900/60 text-slate-200 text-sm">
+    <h2 class="text-lg font-bold text-white mb-1">¿Necesitas ayuda con {app.name}?</h2>
+    <p>
+      Lo más rápido es usar <strong class="text-white">Ajustes → Enviar comentarios</strong> dentro del juego: el correo ya lleva la versión y la semilla de tu vida, y con eso podemos repetirla paso a paso. También puedes escribirnos a <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>.
+    </p>
+  </div>
+
+  <div class="space-y-6">
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> He cambiado de teléfono y no están mis vidas
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Las partidas se guardan solo en el teléfono. Si tenías activada la copia de seguridad de Android, se recuperan al restaurarla en el teléfono nuevo. Si no, antes de cambiar ve a <strong class="text-white">Ajustes → Copia de seguridad → Exportar la vida actual</strong>, guarda el texto y, en el teléfono nuevo, pégalo en <strong class="text-white">Importar una vida</strong>.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> Jugaba en el navegador y no veo esa vida en la app
+      </h3>
+      <p class="text-slate-300 text-sm">
+        La app y el navegador guardan las partidas por separado. En el navegador, ve a Ajustes → Copia de seguridad → Exportar la vida actual, y pega el texto en Importar una vida dentro de la app.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> La pantalla se queda en blanco al abrir el juego
+      </h3>
+      <p class="text-slate-300 text-sm">
+        El juego usa el componente web de Android. Actualiza <strong class="text-white">Android System WebView</strong> y <strong class="text-white">Chrome</strong> desde Google Play y vuelve a abrirlo. Si sigue pasando, escríbenos con el modelo de tu teléfono y tu versión de Android.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> El texto es demasiado pequeño o grande, o me molesta la vibración
+      </h3>
+      <p class="text-slate-300 text-sm">
+        En <strong class="text-white">Ajustes</strong> puedes cambiar el tamaño del texto, el tema claro u oscuro, las animaciones, la vibración, el sonido y el idioma.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> ¿Tiene anuncios o compras?
+      </h3>
+      <p class="text-slate-300 text-sm">
+        No. El juego es gratis y no tiene anuncios, monedas de pago, cajas de botín ni esperas. En el futuro podrá haber expansiones opcionales de pago único, nunca en mitad de una partida.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">📱</span> Requisitos
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Android 7.0 o superior. En español e inglés. Funciona sin conexión a internet.
+      </p>
+    </section>
+  </div>
+</div>
+
+<!-- ==================== ENGLISH VERSION ==================== -->
+<div data-lang="en" class="hidden space-y-8">
+  <div class="p-6 rounded-2xl bg-indigo-950/40 border border-indigo-900/60 text-slate-200 text-sm">
+    <h2 class="text-lg font-bold text-white mb-1">Need help with {app.nameEn}?</h2>
+    <p>
+      The quickest way is <strong class="text-white">Settings → Send feedback</strong> in the game: the email already includes the version and your life's seed, so we can replay it step by step. You can also write to <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>.
+    </p>
+  </div>
+
+  <div class="space-y-6">
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> I changed phones and my lives are gone
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Lives are saved on the phone only. If Android backup was on, they come back when you restore it on the new phone. If not, before switching go to <strong class="text-white">Settings → Backup → Export current life</strong>, keep the text, and on the new phone paste it into <strong class="text-white">Import a life</strong>.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> I played in the browser and can't see that life in the app
+      </h3>
+      <p class="text-slate-300 text-sm">
+        The app and the browser keep their saves separately. In the browser, go to Settings → Backup → Export current life, then paste the text into Import a life in the app.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> The screen stays blank when I open the game
+      </h3>
+      <p class="text-slate-300 text-sm">
+        The game runs on Android's web component. Update <strong class="text-white">Android System WebView</strong> and <strong class="text-white">Chrome</strong> from Google Play and open it again. If it keeps happening, write to us with your phone model and Android version.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> The text is too small or too big, or the vibration bothers me
+      </h3>
+      <p class="text-slate-300 text-sm">
+        In <strong class="text-white">Settings</strong> you can change the text size, light or dark theme, animations, vibration, sound and language.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> Are there ads or purchases?
+      </h3>
+      <p class="text-slate-300 text-sm">
+        No. The game is free, with no ads, premium currency, loot boxes or waiting. Optional one-off expansions may come in the future, never in the middle of a game.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">📱</span> Requirements
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Android 7.0 or later. In English and Spanish. Works offline.
+      </p>
+    </section>
+  </div>
+</div>

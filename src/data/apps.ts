@@ -130,5 +130,53 @@ export const apps: AppData[] = [
     ],
     requirements: "Android 8.0 o superior · Funciona sin conexión",
     requirementsEn: "Android 8.0 or later · Works offline"
+  },
+  {
+    slug: "lifeseed",
+    name: "Lifeseed",
+    nameEn: "Lifeseed",
+    tagline: "Vive una vida entera en texto: decisiones, familia y legado. Sin anuncios.",
+    taglineEn: "Live a whole life in text: choices, family and legacy. No ads.",
+    category: "Juegos · Simulación",
+    categoryEn: "Games · Simulation",
+    iconBg: "from-amber-400 via-orange-500 to-rose-500",
+    iconEmoji: "🌱",
+    iconImage: "/apps/lifeseed/icon.png",
+    status: "beta",
+    version: "0.3.0",
+    priceModel: "Gratis · Sin anuncios · Sin compras dentro del juego",
+    priceModelEn: "Free · No ads · No in-game purchases",
+    description: "Lifeseed es un simulador de vida por texto. Naces, creces y decides: cada año pasa algo y cada decisión deja huella. Estudia, trabaja, enamórate, forma una familia o arriésgate fuera de la ley, y cuando mueras sigue la historia como tu hijo o tu hija. Sin anuncios, sin monedas de pago, sin temporizadores y sin recoger ningún dato.",
+    descriptionEn: "Lifeseed is a text life simulator. You're born, you grow up, you decide: something happens every year, and every choice leaves a mark. Study, work, fall in love, raise a family or take your chances outside the law, and when you die the story goes on as your son or daughter. No ads, no premium currency, no timers, and no data collected.",
+    features: [
+      "Una vida entera, del primer llanto al último suspiro, en seis países",
+      "Más de 400 momentos escritos con humor y con cariño, en español e inglés",
+      "Estudios, carreras, pareja, hijos, amistades… y delitos absurdos con juicio y cárcel",
+      "Legado: al morir, continúa como tu hijo o tu hija y construye una dinastía",
+      "Logros y retos opcionales, sin temporizadores ni esperas",
+      "Sin cuenta, sin conexión y sin recoger datos: las partidas se quedan en tu móvil"
+    ],
+    featuresEn: [
+      "A whole life, from your first cry to your last breath, in six countries",
+      "Over 400 moments written with humour and heart, in English and Spanish",
+      "Studies, careers, love, children, friends… and absurd crimes with trials and prison",
+      "Legacy: when you die, carry on as your son or daughter and build a dynasty",
+      "Optional achievements and challenges, with no timers or waiting",
+      "No account, works offline, no data collected: your lives stay on your phone"
+    ],
+    requirements: "Android 7.0 o superior · Funciona sin conexión",
+    requirementsEn: "Android 7.0 or later · Works offline",
+    legalUpdated: "8 de noviembre de 2026",
+    legalUpdatedEn: "8 November 2026",
+    screenshots: [
+      { src: "/apps/lifeseed/screenshots/01_life.webp", alt: "Una vida en marcha: estadísticas y diario del año" },
+      { src: "/apps/lifeseed/screenshots/02_decision.webp", alt: "Una decisión: cada elección deja huella" },
+      { src: "/apps/lifeseed/screenshots/03_person.webp", alt: "Las personas de tu vida recuerdan cómo las tratas" },
+      { src: "/apps/lifeseed/screenshots/04_actions.webp", alt: "Acciones: estudios, trabajo, ocio y más" },
+      { src: "/apps/lifeseed/screenshots/05_obituary.webp", alt: "La necrológica al final de una vida" },
+      { src: "/apps/lifeseed/screenshots/06_heirs.webp", alt: "Legado: continúa como tu hijo o tu hija" },
+      { src: "/apps/lifeseed/screenshots/07_family_tree.webp", alt: "El árbol familiar de tu dinastía" },
+      { src: "/apps/lifeseed/screenshots/08_achievements.webp", alt: "Logros y retos opcionales" }
+    ]
   }
 ];
