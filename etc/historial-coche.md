@@ -25,13 +25,13 @@ página o sección independiente.
 
 **Historial del Coche (Dossier de Mantenimiento)**  
 Responsable: Ivan Steuerberg (RST Soft) · Contacto: devrstsoft@gmail.com  
-Última actualización: 9 de octubre de 2026 · Versión de la app: 1.0.0  
+Última actualización: 9 de noviembre de 2026 · Versión de la app: 1.0.1  
 
 ### En resumen
 
 Historial del Coche no recopila, no rastrea, no vende ni comparte tus datos personales. La aplicación está diseñada bajo una arquitectura estricta sin servidores propios: todos los datos de tus vehículos, fechas de inspección, registros de taller y fotografías de facturas se almacenan de forma local en la memoria interna de tu dispositivo. 
 
-No existen cuentas de usuario, no hay publicidad y no hay herramientas de analítica ni telemetría. La conexión a internet se utiliza de manera exclusiva para dos funciones opcionales gestionadas directamente por Google: la compra integrada de la versión Pro a través de Google Play Billing y la copia de seguridad opcional en la carpeta privada `appDataFolder` de tu propia cuenta de Google Drive.
+No existen cuentas de usuario, no hay publicidad y la app no tiene analítica ni telemetría propias. Dos componentes de Google que usa la app (el escáner de documentos y Google Play Billing) pueden enviar a Google datos de diagnóstico y uso según sus propias políticas; ver «Servicios de terceros». La conexión a internet se utiliza de manera exclusiva para dos funciones opcionales gestionadas directamente por Google: la compra integrada de la versión Pro a través de Google Play Billing y la copia de seguridad opcional en la carpeta privada `appDataFolder` de tu propia cuenta de Google Drive.
 
 ### Qué datos trata la aplicación
 
@@ -41,6 +41,7 @@ La app almacena y procesa exclusivamente la información que tú decides registr
 - **Vencimientos y alertas:** fechas límites de Inspección Técnica de Vehículos (ITV), seguro obligatorio, impuesto de circulación (IVTM) y revisiones anuales o personalizadas.
 - **Intervenciones de taller:** fecha del servicio, kilometraje en ese momento, categoría del trabajo (mantenimiento, frenos, neumáticos, etc.), nombre del taller o proveedor, importe económico y notas u observaciones.
 - **Comprobantes y facturas:** imágenes escaneadas o importadas de hojas de taller, informes de ITV y facturas en formato JPEG o PDF.
+- **Moneda de los importes:** ajuste local (euro por defecto, o USD, GBP, CHF, MXN, ARS, COP, PEN, BRL); solo cambia cómo se muestran los importes y no sale del dispositivo.
 - **Versiones tapadas de comprobantes:** imágenes derivadas generadas en tu dispositivo donde has cubierto voluntariamente datos personales o importes mediante rectángulos negros para proteger tu intimidad.
 
 ### Dónde se guarda tu información
@@ -50,13 +51,14 @@ Toda la información se almacena estrictamente en el almacenamiento interno priv
 ### Copias de seguridad y exportación
 
 1. **Copia de seguridad local (.zip):** Puedes generar en cualquier momento un archivo `.zip` comprimido y cifrado por el sistema de archivos que contiene tu base de datos y todas tus facturas, seleccionando tú mismo dónde guardarlo en tu dispositivo o almacenamiento externo mediante el selector seguro de Android (Storage Access Framework).
-2. **Copia en Google Drive (función Pro opcional):** Si dispones de la versión Pro y decides activar la sincronización con Google Drive, la app subirá copias de seguridad de tus datos exclusivamente a la carpeta oculta de datos de aplicación (`appDataFolder`) de **tu propia cuenta de Google**. Ni nosotros ni ningún tercero tenemos acceso a tu cuenta de Drive ni a los archivos almacenados en ella.
+2. **Copia en Google Drive (función Pro opcional):** Si dispones de la versión Pro y decides activar la sincronización con Google Drive, la app subirá copias de seguridad de tus datos exclusivamente a la carpeta oculta de datos de aplicación (`appDataFolder`) de **tu propia cuenta de Google**. Ni nosotros ni ningún tercero tenemos acceso a tu cuenta de Drive ni a los archivos almacenados en ella. Se conservan las 3 últimas copias. Al pulsar «Desconectar» en los Ajustes de la app, las copias de `appDataFolder` se borran; si no hay conexión, el borrado queda pendiente y la app lo reintenta automáticamente durante un máximo de 7 días.
+3. **Abrir una copia `.zip` desde otra app:** con «Abrir con», la app te lleva al flujo de restauración, que siempre pide confirmación antes de sobrescribir.
 
 ### Permisos solicitados y su finalidad
 
 | Permiso | Finalidad |
 |---|---|
-| Notificaciones (`POST_NOTIFICATIONS`) | Mostrar recordatorios matinales cuando se aproxima la fecha de caducidad de tu ITV, seguro o revisión. |
+| Notificaciones (`POST_NOTIFICATIONS`) | Mostrar recordatorios matinales cuando se aproxima la fecha de caducidad de tu ITV, seguro o revisión. El permiso se pide en contexto (al poner la primera fecha de vencimiento o desde una tarjeta en Inicio), nunca al abrir la app. |
 | Ejecución en segundo plano (`WorkManager`) | Comprobar una vez al día las fechas de vencimiento para emitir los avisos del semáforo sin necesidad de que la app esté abierta. |
 | Acceso a archivos (mediante selector del sistema) | Importar facturas en PDF o imágenes de tu galería y exportar el archivo `.zip` o el dossier PDF generado. No se pide acceso general a toda tu memoria. |
 | Facturación de Google Play | Procesar de forma segura la compra opcional de la versión Pro de pago único. |
@@ -71,9 +73,11 @@ Cuando compartes un dossier con un posible comprador, la aplicación incluye una
 
 - **Google Play Billing:** La compra de la versión Pro se tramita íntegramente a través de la pasarela de pagos de Google Play. Nosotros no recibimos, tratamos ni almacenamos ningún dato bancario o de tarjeta de crédito.
 - **Google Drive REST API:** Utilizada únicamente si el usuario Pro activa voluntariamente la copia en la nube.
-- **Google Play Services (ML Kit Document Scanner):** Utilizado para digitalizar facturas en papel directamente con la cámara del dispositivo de forma local.
+- **Google Play Services (ML Kit Document Scanner):** Utilizado para digitalizar facturas en papel con la cámara del dispositivo. Las imágenes escaneadas se guardan en tu dispositivo.
 
-La aplicación **no incluye** redes de publicidad (AdMob u otras), bibliotecas de analítica (Firebase Analytics, Google Analytics), ni herramientas de rastreo de fallos que recopilen telemetría (Crashlytics, Sentry).
+**Datos de diagnóstico y uso que pueden recibir los componentes de Google.** La app no tiene analítica ni telemetría propias y no envía ningún dato a servidores del desarrollador. Sin embargo, dos componentes de Google que la app utiliza pueden enviar a Google datos técnicos de diagnóstico y de uso, conforme a las políticas de Google: el escáner de documentos de ML Kit (parte de Google Play Services) y Google Play Billing (solo si realizas la compra Pro). Estos datos no incluyen los datos de tus vehículos, tus facturas ni tu historial de mantenimiento, que permanecen en tu dispositivo. Más información en la [Política de Privacidad de Google](https://policies.google.com/privacy).
+
+La aplicación **no incluye** redes de publicidad (AdMob u otras), bibliotecas de analítica propias (Firebase Analytics, Google Analytics), ni herramientas de rastreo de fallos que recopilen telemetría (Crashlytics, Sentry).
 
 ### Menores de edad
 
@@ -84,7 +88,7 @@ La aplicación está destinada a propietarios y conductores de vehículos mayore
 De conformidad con el Reglamento General de Protección de Datos de la Unión Europea:
 
 - **Acceso y Portabilidad:** Puedes extraer la totalidad de tus datos en cualquier momento mediante la exportación de la copia local en `.zip` o la generación del Dossier PDF.
-- **Rectificación y Supresión:** Puedes editar o eliminar cualquier vehículo, visita, fecha o factura directamente desde la aplicación.
+- **Rectificación y Supresión:** Puedes editar o eliminar cualquier vehículo, visita, fecha o factura directamente desde la aplicación. Al eliminar un vehículo, también se borran de la memoria del móvil las fotos de sus facturas y comprobantes.
 - **Eliminación total:** Si desinstalas la aplicación o borras sus datos desde los Ajustes de Android, todos los datos almacenados en tu dispositivo se destruirán de forma inmediata e irrecuperable. Si utilizas la copia en Google Drive, puedes pulsar «Desconectar y borrar copia» desde los Ajustes de la app o eliminar los datos desde la configuración de aplicaciones conectadas de tu cuenta de Google.
 
 Para cualquier duda sobre la privacidad de la aplicación, puedes contactar al responsable en: **devrstsoft@gmail.com**.
@@ -99,13 +103,13 @@ Cualquier actualización de esta política se publicará en esta misma direcció
 
 **Historial del Coche (Vehicle Service History & Dossier)**  
 Controller: Ivan Steuerberg (RST Soft) · Contact: devrstsoft@gmail.com  
-Last updated: 9 October 2026 · App version: 1.0.0  
+Last updated: November 9, 2026 · App version: 1.0.1  
 
 ### In Short
 
 Historial del Coche does not collect, track, sell, or share your personal data. The app is built with a strict offline-first, serverless architecture: all vehicle details, inspection dates, workshop invoices, and receipts are stored locally on your device's internal storage.
 
-There are no user accounts, no advertisements, and no third-party analytics or telemetry trackers. Internet access is used exclusively for two optional features powered by Google: processing the one-time Pro upgrade via Google Play Billing and backing up your data to the private `appDataFolder` of your personal Google Drive account.
+There are no user accounts, no advertisements, and the app has no analytics or telemetry of its own. Two Google components the app uses (the document scanner and Google Play Billing) may send diagnostic and usage data to Google under Google's own policies; see "Third-Party Services". Internet access is used exclusively for two optional features powered by Google: processing the one-time Pro upgrade via Google Play Billing and backing up your data to the private `appDataFolder` of your personal Google Drive account.
 
 ### What Data the App Handles
 
@@ -115,6 +119,7 @@ The app stores only the data you choose to input to maintain your vehicle's docu
 - **Due dates and reminders:** expiration dates for vehicle technical inspections (MOT/ITV), insurance policy, road tax, and annual services.
 - **Workshop service logs:** service date, logged mileage, service category (maintenance, brakes, tires, etc.), workshop name, cost, and personal notes.
 - **Invoices and receipts:** scanned or attached receipt images and PDF documents.
+- **Currency of amounts:** a local setting (euro by default, or USD, GBP, CHF, MXN, ARS, COP, PEN, BRL); it only changes how amounts are displayed and never leaves your device.
 - **Redacted receipts:** derived image versions where you have manually covered sensitive data or prices with solid black rectangles to protect your privacy prior to sharing.
 
 ### Where Your Data is Stored
@@ -124,13 +129,14 @@ All information is saved strictly within the private local storage sandbox of th
 ### Backups and Exporting
 
 1. **Local Backup (.zip):** You can generate a full `.zip` archive containing your entire database and documents at any time using Android's Storage Access Framework, allowing you to choose where to store it.
-2. **Google Drive Backup (optional Pro feature):** If you upgrade to Pro and choose to enable Google Drive backup, the application uploads your encrypted archive strictly to the hidden application data folder (`appDataFolder`) of **your own Google account**. Neither we nor any third party have access to your Drive files.
+2. **Google Drive Backup (optional Pro feature):** If you upgrade to Pro and choose to enable Google Drive backup, the application uploads your backup archive strictly to the hidden application data folder (`appDataFolder`) of **your own Google account**. Neither we nor any third party have access to your Drive files. The 3 most recent backups are kept. When you tap "Disconnect" in the app's Settings, the backups in `appDataFolder` are deleted; if there is no connection, the deletion stays pending and the app retries it automatically for up to 7 days.
+3. **Opening a backup `.zip` from another app:** with "Open with", the app takes you to the restore flow, which always asks for confirmation before overwriting.
 
 ### Permissions and Purpose
 
 | Permission | Purpose |
 |---|---|
-| Notifications (`POST_NOTIFICATIONS`) | Deliver morning alerts when an inspection, insurance, or maintenance due date is approaching. |
+| Notifications (`POST_NOTIFICATIONS`) | Deliver morning alerts when an inspection, insurance, or maintenance due date is approaching. The permission is requested in context (when you set your first due date or from a card on the Home screen), never when the app opens. |
 | Background execution (`WorkManager`) | Perform once-daily checks of due dates to update the traffic-light status without keeping the app open. |
 | Storage access (via system picker) | Import invoice PDFs or images and save generated PDF dossiers or `.zip` backup files. |
 | Google Play Billing | Securely process the optional one-time Pro license purchase. |
@@ -145,14 +151,16 @@ Before sharing a vehicle dossier with potential buyers, you can use the built-in
 
 - **Google Play Billing:** Used for purchasing the Pro lifetime license. We do not receive or process credit card numbers or banking data.
 - **Google Drive REST API:** Used solely if you explicitly enable cloud backup in your private Drive storage.
-- **Google Play Services:** Used for local on-device document scanning.
+- **Google Play Services:** Used to scan paper invoices with your device's camera (ML Kit document scanner). Scanned images are saved on your device.
 
-The app contains **no advertising SDKs**, no usage tracking, and no crash analytics.
+**Diagnostic and usage data that Google components may receive.** The app has no analytics or telemetry of its own and sends no data to servers operated by the developer. However, two Google components the app uses may send technical diagnostic and usage data to Google, under Google's own policies: the ML Kit document scanner (part of Google Play Services) and Google Play Billing (only if you make the Pro purchase). This data does not include your vehicle data, your invoices or your maintenance history, which stay on your device. More information in [Google's Privacy Policy](https://policies.google.com/privacy).
+
+The app contains **no advertising SDKs**, no analytics libraries of its own, and no crash-reporting tools.
 
 ### Data Deletion and GDPR Rights
 
 - **Access & Portability:** You can export all your data at any time via `.zip` export or PDF dossier generation.
-- **Erasure:** Deleting an intervention or vehicle removes it immediately. Uninstalling the app completely purges all stored files and database entries from your device.
+- **Erasure:** Deleting an intervention or vehicle removes it immediately; deleting a vehicle also deletes its invoice and receipt photos from the phone's storage. Uninstalling the app completely purges all stored files and database entries from your device.
 
 Contact: **devrstsoft@gmail.com**.
 
@@ -161,7 +169,7 @@ Contact: **devrstsoft@gmail.com**.
 ## Términos de uso
 
 **Historial del Coche (Dossier de Mantenimiento)** · Ivan Steuerberg (RST Soft) · devrstsoft@gmail.com  
-Última actualización: 9 de octubre de 2026  
+Última actualización: 9 de noviembre de 2026  
 
 ### 1. Objeto de la aplicación
 
@@ -201,7 +209,7 @@ Estos términos se rigen por la legislación española y la normativa comunitari
 ## Terms of Use
 
 **Historial del Coche (Vehicle Service History & Dossier)** · Ivan Steuerberg (RST Soft) · devrstsoft@gmail.com  
-Last updated: 9 October 2026  
+Last updated: November 9, 2026  
 
 ### 1. Scope of the Application
 
@@ -239,7 +247,8 @@ Al registrar una visita con factura, pulsa sobre la miniatura de la imagen en el
 
 #### 3. ¿Cómo paso mis datos a un móvil nuevo?
 - **Copia local (.zip):** En tu móvil antiguo, ve a *Ajustes → Copias de seguridad → Crear copia local (.zip)* y guarda el archivo en un pendrive, envíatelo por correo o súbelo a la nube. En el móvil nuevo, descarga la app, pulsa en *«Ya tengo una copia de seguridad»* y selecciona el archivo `.zip`.
-- **Google Drive (Pro):** En el móvil antiguo, pulsa *«Copiar ahora en Drive»*. En el móvil nuevo, activa Pro, conecta tu cuenta de Google Drive y pulsa *«Restaurar»*.
+- **Google Drive (Pro):** En el móvil antiguo, pulsa *«Subir copia a Drive»*. En el móvil nuevo, activa Pro, conecta tu cuenta de Google Drive y pulsa *«Restaurar»*. Drive conserva las 3 últimas copias.
+- **Abrir una copia .zip desde otra app:** con «Abrir con», la app te lleva al flujo de restauración, que siempre pide confirmación antes de sobrescribir.
 
 #### 4. He cambiado de móvil y no se reconoce mi compra Pro
 Ve a *Ajustes → Versión Pro → Restaurar compras*. Google Play verificará tu compra previa y reactivará la versión Pro automáticamente sin ningún coste adicional.
@@ -247,14 +256,19 @@ Ve a *Ajustes → Versión Pro → Restaurar compras*. Google Play verificará t
 #### 5. Requisitos mínimos
 Android 8.0 (API 26) o superior. Funciona completamente sin conexión a internet.
 
+#### 6. Moneda, avisos y licencias
+- **Moneda:** *Ajustes → Moneda*: euro (por defecto), USD, GBP, CHF, MXN, ARS, COP, PEN o BRL. Solo cambia cómo se muestran los importes, no los importes guardados.
+- **Avisos:** el permiso de notificaciones se pide en contexto (al poner la primera fecha de vencimiento o desde una tarjeta en Inicio), nunca al abrir la app.
+- **Licencias:** *Ajustes → Licencias de código abierto*.
+
 ---
 
 ## Eliminación de datos / Data Deletion
 
 **Español.** Historial del Coche opera sin cuentas de usuario y almacena toda la información de forma local en tu propio teléfono:
 - **Para borrar todos los datos locales:** Desinstala la aplicación de tu dispositivo o ve a *Ajustes de Android → Aplicaciones → Historial del Coche → Almacenamiento → Borrar datos*. Esto destruye de forma inmediata y definitiva todas las visitas, datos y facturas.
-- **Para borrar la copia de Google Drive (usuarios Pro):** Abre la app, ve a *Ajustes → Google Drive → Desconectar y borrar copia*. También puedes borrarla en cualquier momento desde tu cuenta de Google en *Google Drive → Configuración → Administrar aplicaciones → Historial del Coche → Eliminar datos ocultos de la aplicación*.
+- **Para borrar la copia de Google Drive (usuarios Pro):** Abre la app, ve a *Ajustes → Google Drive → Desconectar*. Las copias de `appDataFolder` se borran; si no hay conexión, el borrado queda pendiente y la app lo reintenta automáticamente durante un máximo de 7 días. También puedes borrarla en cualquier momento desde tu cuenta de Google en *Google Drive → Configuración → Administrar aplicaciones → Historial del Coche → Eliminar datos ocultos de la aplicación*.
 
 **English.** Historial del Coche functions without user accounts and saves data locally on your device:
 - **To delete local data:** Uninstall the application or navigate to *Android Settings → Apps → Historial del Coche → Storage → Clear data*. All vehicle logs and invoices are immediately destroyed.
-- **To delete Google Drive cloud backups (Pro users):** Open the app, go to *Settings → Google Drive → Disconnect and delete backup*. You can also manage it via your Google account at *Google Drive → Settings → Manage Apps → Historial del Coche → Delete hidden app data*.
+- **To delete Google Drive cloud backups (Pro users):** Open the app, go to *Settings → Google Drive → Disconnect*. The backups in `appDataFolder` are deleted; if there is no connection, the deletion stays pending and the app retries it automatically for up to 7 days. You can also manage it via your Google account at *Google Drive → Settings → Manage Apps → Historial del Coche → Delete hidden app data*.

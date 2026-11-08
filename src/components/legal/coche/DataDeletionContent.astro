@@ -23,6 +23,10 @@ const { app } = Astro.props;
       Para borrar todos los vehículos, visitas, gastos y facturas almacenados en tu dispositivo, puedes emplear cualquiera de estos dos métodos:
     </p>
 
+    <p class="text-xs text-slate-400 mb-4">
+      Si solo quieres quitar un vehículo, elimínalo desde la app: también se borran de la memoria del móvil las fotos de sus facturas y comprobantes.
+    </p>
+
     <div class="space-y-4">
       <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
         <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
@@ -56,12 +60,15 @@ const { app } = Astro.props;
     </p>
     <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
       <li>
-        <strong class="text-white">Desde la propia app:</strong> Abre la aplicación, entra en <em>Ajustes → Google Drive</em> y pulsa en <strong class="text-red-400">«Desconectar y borrar copia»</strong>.
+        <strong class="text-white">Desde la propia app:</strong> Abre la aplicación, entra en <em>Ajustes → Google Drive</em> y pulsa en <strong class="text-red-400">«Desconectar»</strong>. Se borrarán las copias de la carpeta <code>appDataFolder</code>. Si no hay conexión en ese momento, el borrado queda pendiente y la app lo reintenta automáticamente durante un máximo de 7 días.
       </li>
       <li>
         <strong class="text-white">Desde tu cuenta de Google en cualquier navegador:</strong> Entra en Google Drive → <em>Configuración (icono engranaje) → Administrar aplicaciones → Historial del Coche → Opciones → Eliminar datos ocultos de la aplicación</em>.
       </li>
     </ul>
+    <p class="text-xs text-slate-400 mt-3">
+      La app conserva en Drive como máximo las 3 últimas copias. Desconectar Drive no borra tus datos locales.
+    </p>
   </section>
 
   <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
@@ -91,6 +98,10 @@ const { app } = Astro.props;
     <h2 class="text-xl font-bold text-white mb-3">1. Deleting all local device data</h2>
     <p class="text-slate-300 mb-4">
       To completely remove all vehicle logs, receipts, and settings, use either of the following steps:
+    </p>
+
+    <p class="text-xs text-slate-400 mb-4">
+      If you only want to remove one vehicle, delete it from the app: its invoice and receipt photos are also deleted from the phone's storage.
     </p>
 
     <div class="space-y-4">
@@ -126,12 +137,15 @@ const { app } = Astro.props;
     </p>
     <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
       <li>
-        <strong class="text-white">From within the app:</strong> Open <em>Settings → Google Drive</em> and tap <strong class="text-red-400">«Disconnect and delete backup»</strong>.
+        <strong class="text-white">From within the app:</strong> Open <em>Settings → Google Drive</em> and tap <strong class="text-red-400">«Disconnect»</strong>. The backups in the <code>appDataFolder</code> folder will be deleted. If there is no connection at that moment, the deletion stays pending and the app retries it automatically for up to 7 days.
       </li>
       <li>
         <strong class="text-white">From your Google account web settings:</strong> Visit Google Drive on any web browser → <em>Settings → Manage Apps → Historial del Coche → Options → Delete hidden app data</em>.
       </li>
     </ul>
+    <p class="text-xs text-slate-400 mt-3">
+      The app keeps at most the 3 most recent backups in Drive. Disconnecting Drive does not delete your local data.
+    </p>
   </section>
 
   <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">

@@ -6,7 +6,7 @@ import { developerInfo } from '../../../data/apps';
 <div data-lang="es" class="space-y-8">
   <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
     <strong class="font-semibold block mb-1 text-white">En resumen:</strong>
-    Historial del Coche no recopila, no rastrea, no vende ni comparte tus datos personales. La aplicación está diseñada bajo una arquitectura estricta sin servidores propios: todos los datos de tus vehículos, fechas de inspección, registros de taller y fotografías de facturas se almacenan de forma local en la memoria interna de tu dispositivo. No existen cuentas de usuario, no hay publicidad y no hay herramientas de analítica ni telemetría.
+    Historial del Coche no recopila, no rastrea, no vende ni comparte tus datos personales. La aplicación está diseñada bajo una arquitectura estricta sin servidores propios: todos los datos de tus vehículos, fechas de inspección, registros de taller y fotografías de facturas se almacenan de forma local en la memoria interna de tu dispositivo. No existen cuentas de usuario, no hay publicidad y la app no tiene analítica ni telemetría propias. Dos componentes de Google que usa la app (el escáner de documentos y Google Play Billing) pueden enviar a Google datos de diagnóstico y uso según sus propias políticas; en la sección «Servicios de terceros» lo explicamos con detalle.
   </div>
 
   <section>
@@ -30,6 +30,9 @@ import { developerInfo } from '../../../data/apps';
       <li>
         <strong class="text-white">Versiones tapadas de comprobantes:</strong> imágenes derivadas generadas en tu dispositivo donde has cubierto voluntariamente datos personales o importes mediante rectángulos negros para proteger tu intimidad antes de compartir el dossier.
       </li>
+      <li>
+        <strong class="text-white">Moneda de los importes:</strong> un ajuste local que eliges tú (euro por defecto, o dólar estadounidense, libra esterlina, franco suizo, peso mexicano, peso argentino, peso colombiano, sol peruano o real brasileño). Solo sirve para mostrar los importes en la app y en el dossier, no cambia los importes guardados y no sale de tu dispositivo.
+      </li>
     </ul>
   </section>
 
@@ -46,13 +49,13 @@ import { developerInfo } from '../../../data/apps';
       <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
         <strong class="text-white text-sm block mb-1">1. Copia de seguridad local (.zip):</strong>
         <p class="text-xs text-slate-300">
-          Puedes generar en cualquier momento un archivo <code>.zip</code> comprimido que contiene tu base de datos y todas tus facturas, seleccionando tú mismo dónde guardarlo mediante el selector seguro de Android (Storage Access Framework).
+          Puedes generar en cualquier momento un archivo <code>.zip</code> comprimido que contiene tu base de datos y todas tus facturas, seleccionando tú mismo dónde guardarlo mediante el selector seguro de Android (Storage Access Framework). Si abres un archivo <code>.zip</code> de copia desde otra app («Abrir con»), la app te lleva al flujo de restauración, que siempre pide tu confirmación antes de sobrescribir nada.
         </p>
       </div>
       <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
         <strong class="text-white text-sm block mb-1">2. Copia en Google Drive (función Pro opcional):</strong>
         <p class="text-xs text-slate-300">
-          Si dispones de la versión Pro y decides activar la sincronización con Google Drive, la app subirá copias de seguridad exclusivamente a la carpeta oculta de datos de aplicación (<code>appDataFolder</code>) de <strong class="text-white">tu propia cuenta de Google</strong>. Ni nosotros ni ningún tercero tenemos acceso a tu cuenta de Drive ni a los archivos almacenados en ella.
+          Si dispones de la versión Pro y decides activar la sincronización con Google Drive, la app subirá copias de seguridad exclusivamente a la carpeta oculta de datos de aplicación (<code>appDataFolder</code>) de <strong class="text-white">tu propia cuenta de Google</strong>. Ni nosotros ni ningún tercero tenemos acceso a tu cuenta de Drive ni a los archivos almacenados en ella. Se conservan las 3 últimas copias. Al pulsar «Desconectar» en los Ajustes de la app, las copias de <code>appDataFolder</code> se borran; si en ese momento no hay conexión, el borrado queda pendiente y la app lo reintenta automáticamente durante un máximo de 7 días.
         </p>
       </div>
     </div>
@@ -71,7 +74,7 @@ import { developerInfo } from '../../../data/apps';
         <tbody class="divide-y divide-slate-800/60 bg-slate-950/40 text-slate-300">
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Notificaciones (<code>POST_NOTIFICATIONS</code>)</td>
-            <td class="py-3 px-4">Mostrar recordatorios matinales cuando se aproxima la fecha de caducidad de tu ITV, seguro o revisión.</td>
+            <td class="py-3 px-4">Mostrar recordatorios matinales cuando se aproxima la fecha de caducidad de tu ITV, seguro o revisión. El permiso se pide en contexto (al poner la primera fecha de vencimiento o desde una tarjeta en Inicio), nunca al abrir la app.</td>
           </tr>
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Ejecución en segundo plano (<code>WorkManager</code>)</td>
@@ -89,7 +92,7 @@ import { developerInfo } from '../../../data/apps';
       </table>
     </div>
     <p class="text-sm text-slate-400 mt-2">
-      La aplicación <strong class="text-white">no solicita</strong> acceso a tu ubicación, tus contactos, tu micrófono, tus mensajes ni tu cuenta de teléfono. El escaneo de facturas se realiza localmente a través de Google Play Services ML Kit Document Scanner.
+      La aplicación <strong class="text-white">no solicita</strong> acceso a tu ubicación, tus contactos, tu micrófono, tus mensajes ni tu cuenta de teléfono. El escaneo de facturas se realiza a través del escáner de documentos de Google Play Services (ML Kit).
     </p>
   </section>
 
@@ -113,11 +116,17 @@ import { developerInfo } from '../../../data/apps';
       </li>
       <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
         <strong class="text-white text-sm block">Google Play Services (ML Kit Document Scanner):</strong>
-        <p class="text-xs text-slate-400 mt-1">Utilizado para digitalizar facturas en papel directamente con la cámara del dispositivo de forma local.</p>
+        <p class="text-xs text-slate-400 mt-1">Utilizado para digitalizar facturas en papel con la cámara del dispositivo. Las imágenes escaneadas se guardan en tu dispositivo.</p>
       </li>
     </ul>
+    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 mt-4">
+      <strong class="text-white text-sm block mb-1">Datos de diagnóstico y uso que pueden recibir los componentes de Google</strong>
+      <p class="text-xs text-slate-300">
+        La app no tiene analítica ni telemetría propias y no envía ningún dato a servidores del desarrollador. Sin embargo, dos componentes de Google que la app utiliza pueden enviar a Google datos técnicos de diagnóstico y de uso, conforme a las políticas de Google: el escáner de documentos de ML Kit (parte de Google Play Services) y Google Play Billing (solo si realizas la compra Pro). Estos datos no incluyen los datos de tus vehículos, tus facturas ni tu historial de mantenimiento, que permanecen en tu dispositivo. Más información en la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">Política de Privacidad de Google</a>.
+      </p>
+    </div>
     <p class="text-sm text-slate-400 mt-3">
-      La aplicación <strong class="text-white">no incluye</strong> redes de publicidad (AdMob u otras), bibliotecas de analítica (Firebase Analytics, Google Analytics), ni herramientas de rastreo de fallos que recopilen telemetría (Crashlytics, Sentry).
+      La aplicación <strong class="text-white">no incluye</strong> redes de publicidad (AdMob u otras), bibliotecas de analítica propias (Firebase Analytics, Google Analytics), ni herramientas de rastreo de fallos que recopilen telemetría (Crashlytics, Sentry).
     </p>
   </section>
 
@@ -125,8 +134,8 @@ import { developerInfo } from '../../../data/apps';
     <h2 class="text-xl font-bold text-white mb-3">Tus derechos (RGPD / GDPR)</h2>
     <ul class="list-disc pl-5 space-y-1.5 text-slate-300 text-sm">
       <li><strong class="text-white">Acceso y Portabilidad:</strong> Puedes extraer la totalidad de tus datos en cualquier momento mediante la exportación de la copia local en <code>.zip</code> o la generación del Dossier PDF.</li>
-      <li><strong class="text-white">Rectificación y Supresión:</strong> Puedes editar o eliminar cualquier vehículo, visita, fecha o factura directamente desde la aplicación.</li>
-      <li><strong class="text-white">Eliminación total:</strong> Si desinstalas la aplicación o borras sus datos desde los Ajustes de Android, todos los datos almacenados en tu dispositivo se destruirán de forma inmediata e irrecuperable.</li>
+      <li><strong class="text-white">Rectificación y Supresión:</strong> Puedes editar o eliminar cualquier vehículo, visita, fecha o factura directamente desde la aplicación. Al eliminar un vehículo, también se borran de la memoria del móvil las fotos de sus facturas y comprobantes.</li>
+      <li><strong class="text-white">Eliminación total:</strong> Si desinstalas la aplicación o borras sus datos desde los Ajustes de Android, todos los datos almacenados en tu dispositivo se destruirán de forma inmediata e irrecuperable. Las copias en Google Drive se borran al desconectar Drive desde la app (ver «Eliminación de datos»).</li>
     </ul>
     <p class="mt-4 text-sm">
       Contacto de privacidad: <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
@@ -138,7 +147,7 @@ import { developerInfo } from '../../../data/apps';
 <div data-lang="en" class="hidden space-y-8">
   <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
     <strong class="font-semibold block mb-1 text-white">In Short:</strong>
-    Historial del Coche does not collect, track, sell, or share your personal data. The app is built with a strict offline-first, serverless architecture: all vehicle details, inspection dates, workshop invoices, and receipts are stored locally on your device's internal storage. There are no user accounts, no advertisements, and no third-party analytics or telemetry trackers.
+    Historial del Coche does not collect, track, sell, or share your personal data. The app is built with a strict offline-first, serverless architecture: all vehicle details, inspection dates, workshop invoices, and receipts are stored locally on your device's internal storage. There are no user accounts, no advertisements, and the app has no analytics or telemetry of its own. Two Google components the app uses (the document scanner and Google Play Billing) may send diagnostic and usage data to Google under Google's own policies; the "Third-Party Services" section explains this in detail.
   </div>
 
   <section>
@@ -162,6 +171,9 @@ import { developerInfo } from '../../../data/apps';
       <li>
         <strong class="text-white">Redacted receipts:</strong> derived image versions where you have manually covered sensitive data or prices with solid black rectangles to protect your privacy prior to sharing.
       </li>
+      <li>
+        <strong class="text-white">Currency of amounts:</strong> a local setting you choose (euro by default, or US dollar, pound sterling, Swiss franc, Mexican peso, Argentine peso, Colombian peso, Peruvian sol or Brazilian real). It only changes how amounts are displayed in the app and in the dossier, it does not change saved amounts, and it never leaves your device.
+      </li>
     </ul>
   </section>
 
@@ -178,13 +190,13 @@ import { developerInfo } from '../../../data/apps';
       <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
         <strong class="text-white text-sm block mb-1">1. Local Backup (.zip):</strong>
         <p class="text-xs text-slate-300">
-          You can generate a full <code>.zip</code> archive containing your entire database and documents at any time using Android's Storage Access Framework, allowing you to choose where to store it.
+          You can generate a full <code>.zip</code> archive containing your entire database and documents at any time using Android's Storage Access Framework, allowing you to choose where to store it. If you open a backup <code>.zip</code> from another app ("Open with"), the app takes you to the restore flow, which always asks for your confirmation before overwriting anything.
         </p>
       </div>
       <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
         <strong class="text-white text-sm block mb-1">2. Google Drive Backup (optional Pro feature):</strong>
         <p class="text-xs text-slate-300">
-          If you upgrade to Pro and choose to enable Google Drive backup, the application uploads your encrypted archive strictly to the hidden application data folder (<code>appDataFolder</code>) of <strong class="text-white">your own Google account</strong>. Neither we nor any third party have access to your Drive files.
+          If you upgrade to Pro and choose to enable Google Drive backup, the application uploads your backup archive strictly to the hidden application data folder (<code>appDataFolder</code>) of <strong class="text-white">your own Google account</strong>. Neither we nor any third party have access to your Drive files. The 3 most recent backups are kept. When you tap "Disconnect" in the app's Settings, the backups in <code>appDataFolder</code> are deleted; if there is no connection at that moment, the deletion stays pending and the app retries it automatically for up to 7 days.
         </p>
       </div>
     </div>
@@ -203,7 +215,7 @@ import { developerInfo } from '../../../data/apps';
         <tbody class="divide-y divide-slate-800/60 bg-slate-950/40 text-slate-300">
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Notifications (<code>POST_NOTIFICATIONS</code>)</td>
-            <td class="py-3 px-4">Deliver morning alerts when an inspection, insurance, or maintenance due date is approaching.</td>
+            <td class="py-3 px-4">Deliver morning alerts when an inspection, insurance, or maintenance due date is approaching. The permission is requested in context (when you set your first due date or from a card on the Home screen), never when the app opens.</td>
           </tr>
           <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Background execution (<code>WorkManager</code>)</td>
@@ -221,7 +233,7 @@ import { developerInfo } from '../../../data/apps';
       </table>
     </div>
     <p class="text-sm text-slate-400 mt-2">
-      The app <strong class="text-white">does not request</strong> access to your location, contacts, microphone, call logs, or phone identity. Document scanning uses Google Play Services ML Kit Document Scanner on-device.
+      The app <strong class="text-white">does not request</strong> access to your location, contacts, microphone, call logs, or phone identity. Document scanning uses the Google Play Services document scanner (ML Kit).
     </p>
   </section>
 
@@ -245,11 +257,17 @@ import { developerInfo } from '../../../data/apps';
       </li>
       <li class="p-4 rounded-xl bg-slate-900 border border-slate-800">
         <strong class="text-white text-sm block">Google Play Services:</strong>
-        <p class="text-xs text-slate-400 mt-1">Used for local on-device document scanning.</p>
+        <p class="text-xs text-slate-400 mt-1">Used to scan paper invoices with your device's camera (ML Kit document scanner). Scanned images are saved on your device.</p>
       </li>
     </ul>
+    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 mt-4">
+      <strong class="text-white text-sm block mb-1">Diagnostic and usage data that Google components may receive</strong>
+      <p class="text-xs text-slate-300">
+        The app has no analytics or telemetry of its own and sends no data to servers operated by the developer. However, two Google components the app uses may send technical diagnostic and usage data to Google, under Google's own policies: the ML Kit document scanner (part of Google Play Services) and Google Play Billing (only if you make the Pro purchase). This data does not include your vehicle data, your invoices or your maintenance history, which stay on your device. More information in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">Google's Privacy Policy</a>.
+      </p>
+    </div>
     <p class="text-sm text-slate-400 mt-3">
-      The app contains <strong class="text-white">no advertising SDKs</strong>, no usage tracking, and no crash analytics.
+      The app contains <strong class="text-white">no advertising SDKs</strong>, no analytics libraries of its own, and no crash-reporting tools.
     </p>
   </section>
 
@@ -257,7 +275,7 @@ import { developerInfo } from '../../../data/apps';
     <h2 class="text-xl font-bold text-white mb-3">Data Deletion and GDPR Rights</h2>
     <ul class="list-disc pl-5 space-y-1.5 text-slate-300 text-sm">
       <li><strong class="text-white">Access & Portability:</strong> You can export all your data at any time via <code>.zip</code> export or PDF dossier generation.</li>
-      <li><strong class="text-white">Erasure:</strong> Deleting an intervention or vehicle removes it immediately. Uninstalling the app completely purges all stored files and database entries from your device.</li>
+      <li><strong class="text-white">Erasure:</strong> Deleting an intervention or vehicle removes it immediately; deleting a vehicle also deletes its invoice and receipt photos from the phone's storage. Uninstalling the app completely purges all stored files and database entries from your device. Google Drive backups are deleted when you disconnect Drive from the app (see "Data Deletion").</li>
     </ul>
     <p class="mt-4 text-sm">
       Contact: <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.

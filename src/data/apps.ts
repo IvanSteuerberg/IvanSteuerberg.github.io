@@ -106,7 +106,9 @@ export const apps: AppData[] = [
     iconEmoji: "🚗",
     iconImage: "/apps/historial-coche/icon.png",
     status: "coming_soon",
-    version: "1.0.0",
+    version: "1.0.1",
+    legalUpdated: "9 de noviembre de 2026",
+    legalUpdatedEn: "November 9, 2026",
     priceModel: "Gratuita (1 vehículo) + Versión Pro (Pago único)",
     priceModelEn: "Free (1 vehicle) + Pro Lifetime (One-time purchase)",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.historialcoche.app",
@@ -118,7 +120,8 @@ export const apps: AppData[] = [
       "Herramienta de tapado irreversible de datos privados en facturas (NIF, nombre, banco)",
       "Semáforo de alertas matinales para vencimientos de ITV, seguro e impuestos",
       "100% Sin servidores: base de datos local SQLite y exportación en .zip",
-      "Copia de seguridad opcional en la carpeta privada de tu propio Google Drive (Pro)"
+      "Copia de seguridad opcional en la carpeta privada de tu propio Google Drive (Pro)",
+      "Moneda a elegir para los importes: EUR, USD, GBP, CHF, MXN, ARS, COP, PEN o BRL"
     ],
     featuresEn: [
       "Complete chronological service logs, inspections, and repairs",
@@ -126,7 +129,8 @@ export const apps: AppData[] = [
       "Permanent redaction tool to conceal private data on invoices (ID, name, bank details)",
       "Morning alerts and status lights for MOT/ITV, insurance, and tax due dates",
       "Serverless & offline-first: private SQLite database with .zip export",
-      "Optional cloud backup to your private Google Drive appDataFolder (Pro)"
+      "Optional cloud backup to your private Google Drive appDataFolder (Pro)",
+      "Choose the currency of your amounts: EUR, USD, GBP, CHF, MXN, ARS, COP, PEN or BRL"
     ],
     requirements: "Android 8.0 o superior · Funciona sin conexión",
     requirementsEn: "Android 8.0 or later · Works offline"

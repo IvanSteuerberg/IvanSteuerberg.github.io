@@ -45,7 +45,10 @@ const { app } = Astro.props;
           <strong class="text-white">Copia local (.zip):</strong> En tu móvil antiguo, ve a <em>Ajustes → Copias de seguridad → Crear copia local (.zip)</em> y guarda el archivo en un pendrive, envíatelo por correo o súbelo a tu nube. En el móvil nuevo, descarga la app, pulsa en <em>«Ya tengo una copia de seguridad»</em> y selecciona el archivo <code>.zip</code>.
         </li>
         <li>
-          <strong class="text-white">Google Drive (Pro):</strong> En el móvil antiguo, pulsa <em>«Copiar ahora en Drive»</em>. En el móvil nuevo, activa Pro, conecta tu cuenta de Google Drive y pulsa <em>«Restaurar»</em>.
+          <strong class="text-white">Google Drive (Pro):</strong> En el móvil antiguo, pulsa <em>«Subir copia a Drive»</em>. En el móvil nuevo, activa Pro, conecta tu cuenta de Google Drive y pulsa <em>«Restaurar»</em>. Drive conserva las 3 últimas copias.
+        </li>
+        <li>
+          <strong class="text-white">Abrir una copia .zip desde otra app:</strong> Si abres un archivo <code>.zip</code> de copia con «Abrir con» desde otra app, Historial del Coche te lleva al flujo de restauración, que siempre te pide confirmación antes de sobrescribir tus datos.
         </li>
       </ul>
     </section>
@@ -66,6 +69,17 @@ const { app } = Astro.props;
       <p class="text-slate-300 text-sm">
         Android 8.0 (API 26) o superior. Funciona completamente sin conexión a internet.
       </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">💶</span> 6. Moneda, avisos y licencias
+      </h3>
+      <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+        <li><strong class="text-white">Moneda:</strong> en <em>Ajustes → Moneda</em> puedes elegir euro (por defecto), dólar estadounidense, libra esterlina, franco suizo, peso mexicano, peso argentino, peso colombiano, sol peruano o real brasileño. Solo cambia cómo se muestran los importes en la app y en el dossier, no los importes guardados.</li>
+        <li><strong class="text-white">Avisos de vencimiento:</strong> la app pide el permiso de notificaciones en contexto, al poner la primera fecha de vencimiento o desde una tarjeta en Inicio, nunca al abrirla.</li>
+        <li><strong class="text-white">Licencias:</strong> <em>Ajustes → Licencias de código abierto</em> muestra el software de código abierto que usa la app.</li>
+      </ul>
     </section>
   </div>
 </div>
@@ -107,7 +121,10 @@ const { app } = Astro.props;
           <strong class="text-white">Local Backup (.zip):</strong> On your old phone, go to <em>Settings → Backups → Create local .zip backup</em>. On the new phone, install the app, tap <em>«I already have a backup»</em> and select the <code>.zip</code> file.
         </li>
         <li>
-          <strong class="text-white">Google Drive (Pro):</strong> On the old phone, tap <em>«Backup to Drive»</em>. On the new phone, enable Pro, connect your Google Drive account and tap <em>«Restore»</em>.
+          <strong class="text-white">Google Drive (Pro):</strong> On the old phone, tap <em>«Upload backup to Drive»</em>. On the new phone, enable Pro, connect your Google Drive account and tap <em>«Restore»</em>. Drive keeps the 3 most recent backups.
+        </li>
+        <li>
+          <strong class="text-white">Opening a .zip backup from another app:</strong> If you open a backup <code>.zip</code> with "Open with" from another app, Historial del Coche takes you to the restore flow, which always asks for your confirmation before overwriting your data.
         </li>
       </ul>
     </section>
@@ -128,6 +145,17 @@ const { app } = Astro.props;
       <p class="text-slate-300 text-sm">
         Android 8.0 (API 26) or later. Works completely offline.
       </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+        <span class="text-indigo-400">💶</span> 6. Currency, Reminders and Licenses
+      </h3>
+      <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+        <li><strong class="text-white">Currency:</strong> in <em>Settings → Currency</em> you can choose euro (default), US dollar, pound sterling, Swiss franc, Mexican peso, Argentine peso, Colombian peso, Peruvian sol or Brazilian real. It only changes how amounts are displayed in the app and in the dossier, not the saved amounts.</li>
+        <li><strong class="text-white">Due-date reminders:</strong> the app asks for the notifications permission in context, when you set your first due date or from a card on the Home screen, never when it opens.</li>
+        <li><strong class="text-white">Licenses:</strong> <em>Settings → Open source licenses</em> lists the open source software the app uses.</li>
+      </ul>
     </section>
   </div>
 </div>
