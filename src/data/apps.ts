@@ -106,7 +106,7 @@ export const apps: AppData[] = [
     iconEmoji: "🚗",
     iconImage: "/apps/historial-coche/icon.png",
     status: "coming_soon",
-    version: "1.0.1",
+    version: "1.0.2",
     legalUpdated: "9 de noviembre de 2026",
     legalUpdatedEn: "November 9, 2026",
     screenshots: [
