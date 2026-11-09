@@ -109,6 +109,15 @@ export const apps: AppData[] = [
     version: "1.0.1",
     legalUpdated: "9 de noviembre de 2026",
     legalUpdatedEn: "November 9, 2026",
+    screenshots: [
+      { src: "/apps/historial-coche/screenshots/01_dossier_completo.webp", alt: "Dossier completo en PDF: fechas, kilómetros, talleres e importes" },
+      { src: "/apps/historial-coche/screenshots/02_para_el_comprador.webp", alt: "Dossier para el comprador: sin importes y con tus datos tapados" },
+      { src: "/apps/historial-coche/screenshots/03_anuncio_publico.webp", alt: "Dossier para el anuncio: sin matrícula ni bastidor, solo un código de referencia" },
+      { src: "/apps/historial-coche/screenshots/04_semaforo.webp", alt: "Inicio con el semáforo: la ITV vence en 6 días" },
+      { src: "/apps/historial-coche/screenshots/05_registrar_visita.webp", alt: "Editar visita: escanea la factura al salir del taller" },
+      { src: "/apps/historial-coche/screenshots/06_tapar_datos.webp", alt: "Tapar datos personales: importes tapados en la factura" },
+      { src: "/apps/historial-coche/screenshots/07_privacidad.webp", alt: "Sin cuentas, sin anuncios, sin servidores" }
+    ],
     priceModel: "Gratuita (1 vehículo) + Versión Pro (Pago único)",
     priceModelEn: "Free (1 vehicle) + Pro Lifetime (One-time purchase)",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.historialcoche.app",
