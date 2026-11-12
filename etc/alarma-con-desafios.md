@@ -27,7 +27,7 @@ página o sección independiente.
 
 **Alarma con desafíos** (en inglés, *Alarm With Challenges*)
 Responsable: {{TITULAR}} · Contacto: {{EMAIL}}
-Última actualización: 8 de noviembre de 2026 · Versión de la app: 1.1.0
+Última actualización: 12 de noviembre de 2026 · Versión de la app: 1.2.0
 
 ### En resumen
 
@@ -51,6 +51,9 @@ registro.
   nuevas y duración máxima de la alarma.
 - **El estado de la alarma que está sonando y de la comprobación pendiente**,
   para que no se pierdan si el teléfono cierra la app o se reinicia.
+- **Si has comprado el desbloqueo:** solo un indicador (sí, no o pago pendiente)
+  y cuándo se comprobó por última vez con Google Play. No se guarda ningún dato
+  de pago.
 
 Todo se guarda solo en el almacenamiento local de la app. Nada de esto se
 envía a ningún sitio.
@@ -75,6 +78,7 @@ ni a un teléfono nuevo. Si cambias de teléfono, tendrás que crearlas de nuevo
 | Iniciar al arrancar | Volver a programar las alarmas tras reiniciar el teléfono |
 | Excluir de la optimización de batería (opcional) | Abrir, desde Ajustes, el aviso del sistema para que el ahorro de batería no retrase la alarma |
 | Mostrar sobre otras apps (opcional) | Volver a mostrar el desafío si pulsas Inicio mientras suena |
+| Facturación de Google Play | Comprar el desbloqueo y comprobar si ya lo compraste. La conexión la hace la app de Google Play, no esta app |
 
 La app **no pide** acceso a internet, contactos, fotos, archivos multimedia,
 ubicación, cámara ni micrófono.
@@ -103,9 +107,10 @@ no se sube ni sale de tu teléfono.
 Ninguno. La app no incluye publicidad, analíticas ni herramientas de informes
 de errores. No comparte nada con nadie.
 
-La compra se hace a través de Google Play. Los datos de pago los gestiona
-Google según su propia política de privacidad, y nosotros no tenemos acceso a
-ellos.
+La versión gratis no compra nada. El desbloqueo opcional se compra a través de
+Google Play: la app solo pide a Google Play que muestre la compra y le pregunta
+si ya la hiciste. Los datos de pago los gestiona Google según su propia política
+de privacidad, y nosotros no tenemos acceso a ellos.
 
 ### Menores
 
@@ -131,7 +136,7 @@ indicaríamos también en las notas de la versión de la app.
 
 **Alarm With Challenges** (Spanish: *Alarma con desafíos*)
 Controller: {{TITULAR}} · Contact: {{EMAIL}}
-Last updated: 8 November 2026 · App version: 1.1.0
+Last updated: 12 November 2026 · App version: 1.2.0
 
 ### In short
 
@@ -154,6 +159,8 @@ reports or advertising identifiers. There are no accounts and no sign-up.
   maximum alarm duration.
 - **The state of the alarm that is ringing and of any pending check**, so they
   are not lost if the phone closes the app or restarts.
+- **Whether you bought the unlock:** only a flag (yes, no or payment pending)
+  and when it was last checked with Google Play. No payment details are stored.
 
 All of it is kept only in the app's local storage. None of it is sent
 anywhere.
@@ -178,6 +185,7 @@ phones, you will need to create them again.
 | Run at startup | Rescheduling alarms after the phone restarts |
 | Exclude from battery optimization (optional) | Opening, from Settings, the system prompt so battery saving does not delay the alarm |
 | Display over other apps (optional) | Bringing the challenge back if you press Home while it rings |
+| Google Play billing | Buying the unlock and checking whether you already bought it. The Google Play app makes the connection, not this app |
 
 The app **does not ask** for internet, contacts, photos, media files,
 location, camera or microphone access.
@@ -205,8 +213,10 @@ copied, uploaded or sent off your phone.
 None. The app contains no advertising, analytics or crash-reporting tools. It
 shares nothing with anyone.
 
-The purchase is made through Google Play. Payment details are handled by
-Google under its own privacy policy, and we have no access to them.
+The free version buys nothing. The optional unlock is bought through Google
+Play: the app only asks Google Play to show the purchase and whether you have
+already made it. Payment details are handled by Google under its own privacy
+policy, and we have no access to them.
 
 ### Children
 
@@ -231,7 +241,7 @@ so in the app's release notes.
 ## Términos de uso
 
 **Alarma con desafíos** · {{TITULAR}} · {{EMAIL}}
-Última actualización: 8 de noviembre de 2026
+Última actualización: 12 de noviembre de 2026
 
 ### 1. Qué es
 
@@ -242,10 +252,14 @@ posponer. Al instalarla y usarla aceptas estos términos.
 
 ### 2. Compra y licencia
 
-La app se vende como **pago único** a través de Google Play. Al comprarla
-obtienes una licencia personal, no exclusiva e intransferible para usarla en
-los dispositivos asociados a tu cuenta de Google Play, según las condiciones de
-Google Play. No hay suscripciones, compras dentro de la app ni anuncios.
+La app es **gratis** e incluye los desafíos de matemáticas, memoria y tabla de
+números. El **desbloqueo** opcional (puzzle deslizante, sacudir, tu frase,
+aleatorio, repeticiones y «¿Sigues despierto?») es una compra única dentro de
+la app, a través de Google Play. Al comprarlo obtienes una licencia personal, no
+exclusiva e intransferible para usarlo en los dispositivos asociados a tu cuenta
+de Google Play, según las condiciones de Google Play. No hay suscripciones ni
+anuncios. Lo que ya hayas configurado en una alarma se conserva aunque el
+desbloqueo deje de estar activo.
 
 ### 3. Reembolsos
 
@@ -316,7 +330,7 @@ imperativas de protección del consumidor del país donde residas.
 ## Terms of use
 
 **Alarm With Challenges** · {{TITULAR}} · {{EMAIL}}
-Last updated: 8 November 2026
+Last updated: 12 November 2026
 
 ### 1. What it is
 
@@ -326,10 +340,13 @@ number grid or a phrase you choose. It has no snooze button. By installing and u
 
 ### 2. Purchase and licence
 
-The app is sold as a **one-time purchase** through Google Play. Buying it gives
-you a personal, non-exclusive, non-transferable licence to use it on the
-devices linked to your Google Play account, under Google Play's terms. There
-are no subscriptions, in-app purchases or ads.
+The app is **free** and includes the math, memory and number grid challenges.
+The optional **unlock** (sliding puzzle, shake, your phrase, random, rounds and
+“Still awake?”) is a one-time in-app purchase through Google Play. Buying it
+gives you a personal, non-exclusive, non-transferable licence to use it on the
+devices linked to your Google Play account, under Google Play's terms. There are
+no subscriptions or ads. Whatever you have already set up in an alarm is kept
+even if the unlock stops being active.
 
 ### 3. Refunds
 

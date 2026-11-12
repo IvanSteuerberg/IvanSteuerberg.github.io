@@ -31,6 +31,9 @@ import { developerInfo } from '../../../data/apps';
       <li>
         <strong class="text-white">El estado de la alarma que está sonando y de la comprobación pendiente</strong>, para que no se pierdan si el teléfono cierra la app o se reinicia.
       </li>
+      <li>
+        <strong class="text-white">Si has comprado el desbloqueo:</strong> solo un indicador (sí, no o pago pendiente) y cuándo se comprobó por última vez con Google Play. No se guarda ningún dato de pago.
+      </li>
     </ul>
     <p class="mt-3">
       Todo se guarda solo en el almacenamiento local de la app. Nada de esto se envía a ningún sitio.
@@ -95,6 +98,10 @@ import { developerInfo } from '../../../data/apps';
             <td class="py-3 px-4 font-medium text-slate-200">Mostrar sobre otras apps (opcional)</td>
             <td class="py-3 px-4">Volver a mostrar el desafío si pulsas Inicio mientras suena</td>
           </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Facturación de Google Play</td>
+            <td class="py-3 px-4">Comprar el desbloqueo y comprobar si ya lo compraste. La conexión la hace la app de Google Play, no esta app</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -126,7 +133,7 @@ import { developerInfo } from '../../../data/apps';
       Ninguno. La app no incluye publicidad, analíticas ni herramientas de informes de errores. No comparte nada con nadie.
     </p>
     <p class="mt-2">
-      La compra se hace a través de Google Play. Los datos de pago los gestiona Google según su propia política de privacidad, y nosotros no tenemos acceso a ellos.
+      La versión gratis no compra nada. El desbloqueo opcional se compra a través de Google Play: la app solo pide a Google Play que muestre la compra y le pregunta si ya la hiciste. Los datos de pago los gestiona Google según su propia política de privacidad, y nosotros no tenemos acceso a ellos.
     </p>
   </section>
 
@@ -181,6 +188,9 @@ import { developerInfo } from '../../../data/apps';
       </li>
       <li>
         <strong class="text-white">The state of the alarm that is ringing and of any pending check</strong>, so they are not lost if the phone closes the app or restarts.
+      </li>
+      <li>
+        <strong class="text-white">Whether you bought the unlock:</strong> only a flag (yes, no or payment pending) and when it was last checked with Google Play. No payment details are stored.
       </li>
     </ul>
     <p class="mt-3">
@@ -246,6 +256,10 @@ import { developerInfo } from '../../../data/apps';
             <td class="py-3 px-4 font-medium text-slate-200">Display over other apps (optional)</td>
             <td class="py-3 px-4">Bringing the challenge back if you press Home while it rings</td>
           </tr>
+          <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Google Play billing</td>
+            <td class="py-3 px-4">Buying the unlock and checking whether you already bought it. The Google Play app makes the connection, not this app</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -277,7 +291,7 @@ import { developerInfo } from '../../../data/apps';
       None. The app contains no advertising, analytics or crash-reporting tools. It shares nothing with anyone.
     </p>
     <p class="mt-2">
-      The purchase is made through Google Play. Payment details are handled by Google under its own privacy policy, and we have no access to them.
+      The free version buys nothing. The optional unlock is bought through Google Play: the app only asks Google Play to show the purchase and whether you have already made it. Payment details are handled by Google under its own privacy policy, and we have no access to them.
     </p>
   </section>
 
