@@ -25,7 +25,7 @@ página o sección independiente.
 
 **Historial del Coche (Dossier de Mantenimiento)**  
 Responsable: Ivan Steuerberg (RST Soft) · Contacto: devrstsoft@gmail.com  
-Última actualización: 9 de noviembre de 2026 · Versión de la app: 1.0.2  
+Última actualización: 9 de noviembre de 2026 · Versión de la app: 1.0.3  
 
 ### En resumen
 
@@ -103,7 +103,7 @@ Cualquier actualización de esta política se publicará en esta misma direcció
 
 **Historial del Coche (Vehicle Service History & Dossier)**  
 Controller: Ivan Steuerberg (RST Soft) · Contact: devrstsoft@gmail.com  
-Last updated: November 9, 2026 · App version: 1.0.2  
+Last updated: November 9, 2026 · App version: 1.0.3  
 
 ### In Short
 
