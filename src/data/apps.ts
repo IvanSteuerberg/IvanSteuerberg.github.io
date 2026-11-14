@@ -156,31 +156,33 @@ export const apps: AppData[] = [
     iconEmoji: "🌱",
     iconImage: "/apps/lifeseed/icon.png",
     status: "beta",
-    version: "0.3.0",
-    priceModel: "Gratis · Sin anuncios · Sin compras dentro del juego",
-    priceModelEn: "Free · No ads · No in-game purchases",
+    version: "0.4.1",
+    priceModel: "Gratis · Sin anuncios · Expansiones opcionales de pago único",
+    priceModelEn: "Free · No ads · Optional one-off expansions",
     description: "Lifeseed es un simulador de vida por texto. Naces, creces y decides: cada año pasa algo y cada decisión deja huella. Estudia, trabaja, enamórate, forma una familia o arriésgate fuera de la ley, y cuando mueras sigue la historia como tu hijo o tu hija. Sin anuncios, sin monedas de pago, sin temporizadores y sin recoger ningún dato.",
     descriptionEn: "Lifeseed is a text life simulator. You're born, you grow up, you decide: something happens every year, and every choice leaves a mark. Study, work, fall in love, raise a family or take your chances outside the law, and when you die the story goes on as your son or daughter. No ads, no premium currency, no timers, and no data collected.",
     features: [
       "Una vida entera, del primer llanto al último suspiro, en seis países",
-      "Más de 400 momentos escritos con humor y con cariño, en español e inglés",
+      "Más de 550 momentos escritos con humor y con cariño, en español e inglés",
       "Estudios, carreras, pareja, hijos, amistades… y delitos absurdos con juicio y cárcel",
       "Legado: al morir, continúa como tu hijo o tu hija y construye una dinastía",
       "Logros y retos opcionales, sin temporizadores ni esperas",
-      "Sin cuenta, sin conexión y sin recoger datos: las partidas se quedan en tu móvil"
+      "Sin cuenta, sin conexión y sin recoger datos: las partidas se quedan en tu móvil",
+      "Expansión opcional Épocas: nace en los años veinte, cuarenta, sesenta, ochenta o dos mil y vive cada década con sus trabajos, inventos y noticias (pago único)"
     ],
     featuresEn: [
       "A whole life, from your first cry to your last breath, in six countries",
-      "Over 400 moments written with humour and heart, in English and Spanish",
+      "Over 550 moments written with humour and heart, in English and Spanish",
       "Studies, careers, love, children, friends… and absurd crimes with trials and prison",
       "Legacy: when you die, carry on as your son or daughter and build a dynasty",
       "Optional achievements and challenges, with no timers or waiting",
-      "No account, works offline, no data collected: your lives stay on your phone"
+      "No account, works offline, no data collected: your lives stay on your phone",
+      "Optional Eras expansion: be born in the 1920s, 40s, 60s, 80s or 2000s and live each decade with its jobs, inventions and news (one-off purchase)"
     ],
     requirements: "Android 7.0 o superior · Funciona sin conexión",
     requirementsEn: "Android 7.0 or later · Works offline",
-    legalUpdated: "8 de noviembre de 2026",
-    legalUpdatedEn: "8 November 2026",
+    legalUpdated: "14 de noviembre de 2026",
+    legalUpdatedEn: "14 November 2026",
     screenshots: [
       { src: "/apps/lifeseed/screenshots/01_life.webp", alt: "Una vida en marcha: estadísticas y diario del año" },
       { src: "/apps/lifeseed/screenshots/02_decision.webp", alt: "Una decisión: cada elección deja huella" },

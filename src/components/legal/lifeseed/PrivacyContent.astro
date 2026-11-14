@@ -6,13 +6,13 @@ import { developerInfo } from '../../../data/apps';
 <div data-lang="es" class="space-y-8">
   <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
     <strong class="font-semibold block mb-1 text-white">En resumen:</strong>
-    Lifeseed no recopila, envía, vende ni comparte ningún dato tuyo. No hay cuentas, anuncios, analíticas ni servicios de terceros. Tus partidas se guardan en tu teléfono.
+    Lifeseed no recopila, envía, vende ni comparte ningún dato tuyo. No hay cuentas, anuncios ni analíticas. Tus partidas se guardan en tu teléfono. Las expansiones opcionales se compran a través de Google Play, que procesa el pago: nosotros no vemos tus datos de pago.
   </div>
 
   <section>
     <h2 class="text-xl font-bold text-white mb-3">Qué datos recopilamos</h2>
     <p>
-      Ninguno. El juego no recopila información personal, datos de uso, analíticas, informes de errores ni identificadores publicitarios. No hay cuentas ni registro, y el juego no se conecta a ningún servidor: todo su contenido viene dentro de la app y funciona sin conexión.
+      Ninguno. El juego no recopila información personal, datos de uso, analíticas, informes de errores ni identificadores publicitarios. No hay cuentas ni registro, y el juego no se conecta a ningún servidor nuestro: todo su contenido viene dentro de la app y funciona sin conexión. Solo habla con Google Play, a través de la app de Play Store de tu teléfono, para comprar expansiones y comprobar cuáles tienes (ver «Compras integradas»).
     </p>
   </section>
 
@@ -23,9 +23,20 @@ import { developerInfo } from '../../../data/apps';
       <li><strong class="text-white">El cementerio:</strong> el resumen de las vidas que ya han terminado.</li>
       <li><strong class="text-white">Tu progreso:</strong> logros y retos conseguidos.</li>
       <li><strong class="text-white">Tus preferencias:</strong> idioma, tema, tamaño del texto, animaciones, vibración y sonido.</li>
+      <li><strong class="text-white">Tus expansiones:</strong> cuáles has comprado, para que el juego funcione sin conexión.</li>
     </ul>
     <p class="mt-3">
       Todo se guarda en el almacenamiento privado de la app, al que otras apps no pueden acceder. Las vidas son ficticias: el juego no te pide tu nombre ni ningún dato real.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">Compras integradas (expansiones opcionales)</h2>
+    <p>
+      Lifeseed ofrece expansiones opcionales de pago único como compras dentro de la aplicación. El pago lo procesa Google Play con tu cuenta de Google. No recogemos ni guardamos datos financieros, números de tarjeta ni datos bancarios, y no tenemos acceso a ellos. Google nos facilita los datos de cada pedido (producto, importe y país) que la ley obliga a conservar a efectos contables y fiscales.
+    </p>
+    <p class="mt-3">
+      Para saber qué expansiones tienes, el juego se lo pregunta a Google Play a través de la app de Play Store de tu teléfono y guarda la respuesta en el propio teléfono, para poder jugar sin conexión. Lo que compras va ligado a tu cuenta de Google: con <strong class="text-white">Restaurar compras</strong> lo recuperas en cualquier Android con esa misma cuenta.
     </p>
   </section>
 
@@ -52,8 +63,12 @@ import { developerInfo } from '../../../data/apps';
             <td class="py-3 px-4">Vibrar en los momentos importantes de la vida (se puede desactivar en Ajustes)</td>
           </tr>
           <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Facturación de Google Play</td>
+            <td class="py-3 px-4">Comprar las expansiones opcionales y comprobar cuáles tienes, a través de Google Play</td>
+          </tr>
+          <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Acceso a internet</td>
-            <td class="py-3 px-4">Lo incluye por defecto el componente con el que está hecha la app. El juego no lo usa: no se conecta a ningún sitio</td>
+            <td class="py-3 px-4">Lo incluye por defecto el componente con el que está hecha la app. El juego no lo usa: las compras pasan por la app de Play Store</td>
           </tr>
         </tbody>
       </table>
@@ -73,7 +88,7 @@ import { developerInfo } from '../../../data/apps';
   <section>
     <h2 class="text-xl font-bold text-white mb-3">Terceros</h2>
     <p>
-      Ninguno. El juego no incluye publicidad, analíticas ni herramientas de informes de errores, y no comparte nada con nadie. Se distribuye a través de Google Play, que trata sus propios datos según su política de privacidad.
+      El juego no incluye publicidad, analíticas ni herramientas de informes de errores, y no comparte nada con nadie. Se distribuye a través de Google Play, que también procesa el pago de las expansiones y trata sus propios datos según su política de privacidad.
     </p>
   </section>
 
@@ -87,7 +102,7 @@ import { developerInfo } from '../../../data/apps';
   <section>
     <h2 class="text-xl font-bold text-white mb-3">Tus derechos</h2>
     <p>
-      Como no tratamos datos personales tuyos (salvo los correos que decidas enviarnos), no hay nada más que podamos consultar, corregir, exportar ni borrar. Tus partidas están en tu teléfono y las controlas tú: si desinstalas el juego o borras sus datos desde los ajustes de Android, desaparecen. Ver también <a href="/apps/lifeseed/data-deletion/" class="text-indigo-400 hover:underline">Borrado de datos</a>. Para cualquier pregunta, o para que borremos tus correos, escríbenos a
+      Como no tratamos datos personales tuyos (salvo los correos que decidas enviarnos y los datos de pedido que Google nos facilita si compras una expansión), no hay nada más que podamos consultar, corregir, exportar ni borrar. Tus partidas están en tu teléfono y las controlas tú: si desinstalas el juego o borras sus datos desde los ajustes de Android, desaparecen. Ver también <a href="/apps/lifeseed/data-deletion/" class="text-indigo-400 hover:underline">Borrado de datos</a>. Para cualquier pregunta, o para que borremos tus correos, escríbenos a
       <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
     </p>
   </section>
@@ -95,7 +110,7 @@ import { developerInfo } from '../../../data/apps';
   <section>
     <h2 class="text-xl font-bold text-white mb-3">Cambios en esta política</h2>
     <p>
-      Si esta política cambia, publicaremos la nueva versión en esta misma dirección con su fecha. Si en el futuro hubiera expansiones de pago, la compra se haría a través de Google Play y lo indicaríamos aquí antes.
+      Si esta política cambia, publicaremos la nueva versión en esta misma dirección con su fecha.
     </p>
   </section>
 </div>
@@ -104,13 +119,13 @@ import { developerInfo } from '../../../data/apps';
 <div data-lang="en" class="hidden space-y-8">
   <div class="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-900/50 text-indigo-200 text-sm">
     <strong class="font-semibold block mb-1 text-white">In short:</strong>
-    Lifeseed does not collect, send, sell or share any of your data. There are no accounts, ads, analytics or third-party services. Your lives are saved on your phone.
+    Lifeseed does not collect, send, sell or share any of your data. There are no accounts, ads or analytics. Your lives are saved on your phone. Optional expansions are bought through Google Play, which processes the payment: we never see your payment details.
   </div>
 
   <section>
     <h2 class="text-xl font-bold text-white mb-3">What data we collect</h2>
     <p>
-      None. The game collects no personal information, usage data, analytics, crash reports or advertising identifiers. There are no accounts and no sign-up, and the game does not connect to any server: all of its content ships inside the app and it works offline.
+      None. The game collects no personal information, usage data, analytics, crash reports or advertising identifiers. There are no accounts and no sign-up, and the game does not connect to any server of ours: all of its content ships inside the app and it works offline. It only talks to Google Play, through the Play Store app on your phone, to buy expansions and check which ones you own (see “In-app purchases”).
     </p>
   </section>
 
@@ -121,9 +136,20 @@ import { developerInfo } from '../../../data/apps';
       <li><strong class="text-white">The graveyard:</strong> a summary of the lives that have ended.</li>
       <li><strong class="text-white">Your progress:</strong> achievements and challenges completed.</li>
       <li><strong class="text-white">Your preferences:</strong> language, theme, text size, animations, vibration and sound.</li>
+      <li><strong class="text-white">Your expansions:</strong> which ones you have bought, so the game works offline.</li>
     </ul>
     <p class="mt-3">
       All of it is kept in the app's private storage, which other apps cannot read. The lives are fictional: the game never asks for your name or any real information.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-bold text-white mb-3">In-app purchases (optional expansions)</h2>
+    <p>
+      Lifeseed offers optional one-time expansions as in-app purchases. Payment is processed by Google Play with your Google account. We do not collect or keep financial data, card numbers or bank details, and we have no access to them. Google provides us with the details of each order (product, amount and country), which we are required by law to keep for accounting and tax purposes.
+    </p>
+    <p class="mt-3">
+      To know which expansions you own, the game asks Google Play through the Play Store app on your phone and keeps the answer on the phone itself, so you can play offline. What you buy is tied to your Google account: <strong class="text-white">Restore purchases</strong> brings it back on any Android device with that same account.
     </p>
   </section>
 
@@ -150,8 +176,12 @@ import { developerInfo } from '../../../data/apps';
             <td class="py-3 px-4">Vibrating at important moments of a life (can be turned off in Settings)</td>
           </tr>
           <tr>
+            <td class="py-3 px-4 font-medium text-slate-200">Google Play billing</td>
+            <td class="py-3 px-4">Buying the optional expansions and checking which ones you own, through Google Play</td>
+          </tr>
+          <tr>
             <td class="py-3 px-4 font-medium text-slate-200">Internet access</td>
-            <td class="py-3 px-4">Included by default by the framework the app is built with. The game does not use it: it connects to nothing</td>
+            <td class="py-3 px-4">Included by default by the framework the app is built with. The game does not use it: purchases go through the Play Store app</td>
           </tr>
         </tbody>
       </table>
@@ -171,7 +201,7 @@ import { developerInfo } from '../../../data/apps';
   <section>
     <h2 class="text-xl font-bold text-white mb-3">Third parties</h2>
     <p>
-      None. The game contains no advertising, analytics or crash-reporting tools, and shares nothing with anyone. It is distributed through Google Play, which handles its own data under its privacy policy.
+      The game contains no advertising, analytics or crash-reporting tools, and shares nothing with anyone. It is distributed through Google Play, which also processes the payment for expansions and handles its own data under its privacy policy.
     </p>
   </section>
 
@@ -185,7 +215,7 @@ import { developerInfo } from '../../../data/apps';
   <section>
     <h2 class="text-xl font-bold text-white mb-3">Your rights</h2>
     <p>
-      Because we process no personal data about you (other than emails you choose to send us), there is nothing else for us to access, correct, export or delete. Your lives are on your phone and under your control: uninstalling the game, or clearing its data in Android settings, removes them. See also <a href="/apps/lifeseed/data-deletion/" class="text-indigo-400 hover:underline">Data deletion</a>. For any question, or to have your emails deleted, write to
+      Because we process no personal data about you (other than emails you choose to send us, and the order details Google gives us if you buy an expansion), there is nothing else for us to access, correct, export or delete. Your lives are on your phone and under your control: uninstalling the game, or clearing its data in Android settings, removes them. See also <a href="/apps/lifeseed/data-deletion/" class="text-indigo-400 hover:underline">Data deletion</a>. For any question, or to have your emails deleted, write to
       <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 hover:underline">{developerInfo.contactEmail}</a>.
     </p>
   </section>
@@ -193,7 +223,7 @@ import { developerInfo } from '../../../data/apps';
   <section>
     <h2 class="text-xl font-bold text-white mb-3">Changes to this policy</h2>
     <p>
-      If this policy changes, we will publish the new version at this same address, with its date. If paid expansions arrive in the future, purchases would go through Google Play and we would say so here first.
+      If this policy changes, we will publish the new version at this same address, with its date.
     </p>
   </section>
 </div>

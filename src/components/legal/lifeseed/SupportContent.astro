@@ -59,7 +59,16 @@ const { app } = Astro.props;
         <span class="text-indigo-400">❓</span> ¿Tiene anuncios o compras?
       </h3>
       <p class="text-slate-300 text-sm">
-        No. El juego es gratis y no tiene anuncios, monedas de pago, cajas de botín ni esperas. En el futuro podrá haber expansiones opcionales de pago único, nunca en mitad de una partida.
+        No tiene anuncios, monedas de pago, cajas de botín ni esperas, y es completo sin pagar nada. Hay expansiones opcionales de pago único, como <strong class="text-white">Épocas</strong>, que se compran en Ajustes → Expansiones y nunca se ofrecen en mitad de una partida.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> Compré una expansión y no aparece, o quiero que me devuelvan el dinero
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Entra en <strong class="text-white">Ajustes → Expansiones → Restaurar compras</strong> con la misma cuenta de Google con la que compraste. Si sigue sin aparecer, o quieres un reembolso, escríbenos a <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>: atendemos cualquier petición razonable.
       </p>
     </section>
 
@@ -125,7 +134,16 @@ const { app } = Astro.props;
         <span class="text-indigo-400">❓</span> Are there ads or purchases?
       </h3>
       <p class="text-slate-300 text-sm">
-        No. The game is free, with no ads, premium currency, loot boxes or waiting. Optional one-off expansions may come in the future, never in the middle of a game.
+        There are no ads, premium currency, loot boxes or waiting, and the game is complete without paying anything. There are optional one-off expansions, such as <strong class="text-white">Eras</strong>, bought in Settings → Expansions and never offered in the middle of a game.
+      </p>
+    </section>
+
+    <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+      <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-indigo-400">❓</span> I bought an expansion and it isn't there, or I want my money back
+      </h3>
+      <p class="text-slate-300 text-sm">
+        Go to <strong class="text-white">Settings → Expansions → Restore purchases</strong> with the same Google account you bought it with. If it still isn't there, or you would like a refund, write to <a href={`mailto:${developerInfo.contactEmail}`} class="text-indigo-400 font-semibold underline">{developerInfo.contactEmail}</a>: we handle any reasonable request.
       </p>
     </section>
 
