@@ -27,7 +27,7 @@ página o sección independiente.
 
 **Alarma con desafíos** (en inglés, *Alarm With Challenges*)
 Responsable: {{TITULAR}} · Contacto: {{EMAIL}}
-Última actualización: 12 de noviembre de 2026 · Versión de la app: 1.2.0
+Última actualización: 12 de noviembre de 2026 · Versión de la app: 1.2.1
 
 ### En resumen
 
@@ -136,7 +136,7 @@ indicaríamos también en las notas de la versión de la app.
 
 **Alarm With Challenges** (Spanish: *Alarma con desafíos*)
 Controller: {{TITULAR}} · Contact: {{EMAIL}}
-Last updated: 12 November 2026 · App version: 1.2.0
+Last updated: 12 November 2026 · App version: 1.2.1
 
 ### In short
 

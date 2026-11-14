@@ -53,7 +53,7 @@ export const apps: AppData[] = [
     iconEmoji: "⏰",
     iconImage: "/apps/alarma-con-desafios/icon.png",
     status: "published",
-    version: "1.2.0",
+    version: "1.2.1",
     priceModel: "Gratis + desbloqueo de pago único · Sin anuncios · Sin suscripciones",
     priceModelEn: "Free + one-time unlock · No ads · No subscriptions",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.rstsoft.alarm",
